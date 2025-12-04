@@ -1,0 +1,15 @@
+{
+  "name": "ampeco-public-api",
+  "version": "1.0.0",
+  "description": "AMPECO Public API integration helper - explore endpoints, schemas, and patterns for EV charging platform integrations",
+  "author": {
+    "name": "AMPECO",
+    "email": "support@ampeco.com"
+  },
+  "homepage": "https://developers.ampeco.com",
+  "repository": "https://github.com/AmpecoPlatform/claude-code-public-api-plugin",
+  "license": "MIT",
+  "keywords": ["ampeco", "ev-charging", "api", "openapi", "integration"],
+  "category": "api-integration",
+  "skills": ["./skills/ampeco-public-api/SKILL.md"]
+}
