@@ -107,7 +107,6 @@ For interactive API documentation, visit:
 ## Support
 
 - **Documentation**: https://developers.ampeco.com
-- **Support**: support@ampeco.com
 - **Issues**: [GitHub Issues](https://github.com/ampeco/claude-code-ampeco-public-api-skill/issues)
 
 ## License
