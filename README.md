@@ -15,13 +15,13 @@ A Claude Code plugin that helps developers integrate with the [AMPECO EV Chargin
 ## Installation
 
 ```bash
-claude plugin add AmpecoPlatform/claude-code-public-api-plugin
+claude plugin add ampeco/claude-code-ampeco-public-api-skill
 ```
 
 Or clone locally:
 ```bash
-git clone https://github.com/AmpecoPlatform/claude-code-public-api-plugin.git
-claude plugin add ./claude-code-public-api-plugin
+git clone https://github.com/ampeco/claude-code-ampeco-public-api-skill.git
+claude plugin add ./claude-code-ampeco-public-api-skill
 ```
 
 ## Prerequisites
@@ -94,10 +94,10 @@ To use the AMPECO Public API:
 ## Base URL
 
 ```
-https://{tenant}.charge.ampeco.tech/public-api/
+https://{tenantUrl}/public-api/
 ```
 
-Replace `{tenant}` with your organization's tenant identifier.
+Replace `{tenantUrl}` with your organization's tenant URL.
 
 ## Live Documentation
 
@@ -108,7 +108,7 @@ For interactive API documentation, visit:
 
 - **Documentation**: https://developers.ampeco.com
 - **Support**: support@ampeco.com
-- **Issues**: [GitHub Issues](https://github.com/AmpecoPlatform/claude-code-public-api-plugin/issues)
+- **Issues**: [GitHub Issues](https://github.com/ampeco/claude-code-ampeco-public-api-skill/issues)
 
 ## License
 

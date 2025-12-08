@@ -34,10 +34,10 @@ GET /public-api/resources/{resource}/v1.0?per_page=25
 {
   "data": [...],
   "links": {
-    "first": "https://tenant.charge.ampeco.tech/public-api/resources/users/v1.0?per_page=25",
+    "first": "https://{tenantUrl}/public-api/resources/users/v1.0?per_page=25",
     "last": null,
     "prev": null,
-    "next": "https://tenant.charge.ampeco.tech/public-api/resources/users/v1.0?cursor=eyJ...&per_page=25"
+    "next": "https://{tenantUrl}/public-api/resources/users/v1.0?cursor=eyJ...&per_page=25"
   },
   "meta": {
     "cursor": "eyJ...",

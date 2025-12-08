@@ -40,16 +40,16 @@ Contact your AMPECO Customer Success Manager or generate a token in:
 ### 2. Base URL
 
 ```
-https://{tenant}.charge.ampeco.tech/public-api/
+https://{tenantUrl}/public-api/
 ```
 
-Replace `{tenant}` with your organization's tenant identifier.
+Replace `{tenantUrl}` with your organization's tenant URL.
 
 ### 3. Authentication
 
 ```bash
 curl -H "Authorization: Bearer {your-api-token}" \
-     https://{tenant}.charge.ampeco.tech/public-api/resources/charge-points/v2.0/
+     https://{tenantUrl}/public-api/resources/charge-points/v2.0/
 ```
 
 ---
