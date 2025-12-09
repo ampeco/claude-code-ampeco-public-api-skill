@@ -1,8 +1,8 @@
-# AMPECO Public API Plugin for Claude Code
+# AMPECO Public API Skill for Claude Code
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-A Claude Code plugin that helps developers integrate with the [AMPECO EV Charging Platform](https://ampeco.com) Public API.
+A standalone Claude Code skill that helps developers integrate with the [AMPECO EV Charging Platform](https://ampeco.com) Public API.
 
 ## Features
 
@@ -14,15 +14,24 @@ A Claude Code plugin that helps developers integrate with the [AMPECO EV Chargin
 
 ## Installation
 
+### Option 1: Personal Skill (available in all your projects)
+
 ```bash
-claude plugin add ampeco/claude-code-ampeco-public-api-skill
+# Clone into your personal skills directory
+git clone https://github.com/ampeco/claude-code-public-api-skill.git ~/.claude/skills/ampeco-public-api
 ```
 
-Or clone locally:
+### Option 2: Project Skill (shared with your team)
+
 ```bash
-git clone https://github.com/ampeco/claude-code-ampeco-public-api-skill.git
-claude plugin add ./claude-code-ampeco-public-api-skill
+# Clone into your project's skills directory
+git clone https://github.com/ampeco/claude-code-public-api-skill.git .claude/skills/ampeco-public-api
+
+# Or add as a git submodule
+git submodule add https://github.com/ampeco/claude-code-public-api-skill.git .claude/skills/ampeco-public-api
 ```
+
+After installation, restart Claude Code for the skill to become available.
 
 ## Prerequisites
 
@@ -64,8 +73,9 @@ The skill will automatically:
 To fetch the latest OpenAPI spec and regenerate documentation:
 
 ```bash
-cd /path/to/claude-code-public-api-plugin
-bash skills/ampeco-public-api/scripts/fetch-and-generate.sh
+# From the skill directory
+cd ~/.claude/skills/ampeco-public-api  # or .claude/skills/ampeco-public-api
+bash scripts/fetch-and-generate.sh
 ```
 
 This will:
@@ -73,16 +83,20 @@ This will:
 - Regenerate `endpoints-index.md`, `schemas-index.md`, and `deprecation-map.md`
 - Update the quick index in `SKILL.md`
 
-## Reference Files
+## Repository Structure
 
-After running the update script, these files are available:
-
-| File | Description |
-|------|-------------|
-| `reference/endpoints-index.md` | Complete list of all endpoints (449+) |
-| `reference/schemas-index.md` | Schema definitions with properties |
-| `reference/deprecation-map.md` | Deprecated endpoints (67+) |
-| `reference/common-patterns.md` | Authentication, pagination, filtering, errors |
+```
+ampeco-public-api/
+├── SKILL.md                      # Skill definition and quick reference
+├── scripts/
+│   └── fetch-and-generate.sh     # Updates reference docs from OpenAPI spec
+└── reference/
+    ├── endpoints-index.md        # All 449+ API endpoints by resource
+    ├── schemas-index.md          # Schema definitions with properties
+    ├── deprecation-map.md        # Deprecated endpoints (67+)
+    ├── common-patterns.md        # Auth, pagination, filtering, errors
+    └── data-model.md             # Entity relationships and use cases
+```
 
 ## Getting API Access
 
@@ -107,7 +121,7 @@ For interactive API documentation, visit:
 ## Support
 
 - **Documentation**: https://developers.ampeco.com
-- **Issues**: [GitHub Issues](https://github.com/ampeco/claude-code-ampeco-public-api-skill/issues)
+- **Issues**: [GitHub Issues](https://github.com/ampeco/claude-code-public-api-skill/issues)
 
 ## License
 

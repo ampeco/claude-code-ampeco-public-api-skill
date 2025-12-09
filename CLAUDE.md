@@ -4,25 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Type**: Claude Code Plugin
+**Type**: Claude Code Standalone Skill
 **Purpose**: Help developers integrate with the AMPECO EV Charging Platform Public API
 
-This plugin provides a skill (`ampeco-public-api`) that enables Claude Code to explore and explain AMPECO's Public API endpoints, schemas, and integration patterns.
+This is a standalone skill (`ampeco-public-api`) that can be installed into any Claude Code project or user's personal skills directory. It enables Claude Code to explore and explain AMPECO's Public API endpoints, schemas, and integration patterns.
 
 ## Repository Structure
 
 ```
-claude-code-public-api-plugin/
-├── .claude-plugin/plugin.json    # Plugin manifest
-├── skills/ampeco-public-api/
-│   ├── SKILL.md                  # Skill definition and quick reference
-│   ├── scripts/
-│   │   └── fetch-and-generate.sh # Updates reference docs from OpenAPI spec
-│   └── reference/
-│       ├── endpoints-index.md    # All 449+ API endpoints by resource
-│       ├── schemas-index.md      # Schema definitions with properties
-│       ├── deprecation-map.md    # Deprecated endpoints (67+)
-│       └── common-patterns.md    # Auth, pagination, filtering, errors
+ampeco-public-api/
+├── SKILL.md                      # Skill definition and quick reference
+├── scripts/
+│   └── fetch-and-generate.sh     # Updates reference docs from OpenAPI spec
+└── reference/
+    ├── endpoints-index.md        # All 449+ API endpoints by resource
+    ├── schemas-index.md          # Schema definitions with properties
+    ├── deprecation-map.md        # Deprecated endpoints (67+)
+    ├── common-patterns.md        # Auth, pagination, filtering, errors
+    └── data-model.md             # Entity relationships and use cases
 ```
 
 ## Commands
@@ -32,7 +31,7 @@ claude-code-public-api-plugin/
 Fetch latest OpenAPI spec and regenerate all reference files:
 
 ```bash
-bash skills/ampeco-public-api/scripts/fetch-and-generate.sh
+bash scripts/fetch-and-generate.sh
 ```
 
 **Prerequisites**: `curl` and `jq` must be installed
@@ -44,11 +43,13 @@ This script:
 
 ## Key Concepts
 
-### Plugin Architecture
+### Standalone Skill Architecture
 
-- **plugin.json**: Defines plugin metadata and skill references
-- **SKILL.md**: Contains skill frontmatter (name, description, allowed-tools) and user-facing documentation
-- **Reference files**: Auto-generated from OpenAPI spec, provide detailed API documentation
+This repo IS the skill - users clone it directly into their skills directory:
+- Personal: `~/.claude/skills/ampeco-public-api/`
+- Project: `.claude/skills/ampeco-public-api/`
+
+Claude Code discovers the skill by finding `SKILL.md` at the root.
 
 ### SKILL.md Structure
 
