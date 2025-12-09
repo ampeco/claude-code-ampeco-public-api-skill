@@ -153,6 +153,31 @@ curl -H "Authorization: Bearer {your-api-token}" \
 
 ---
 
+## Data Model Overview
+
+Understanding how AMPECO entities relate helps you choose the right endpoints.
+
+```
+Operator (tenant scope)
+├── Location → ChargePoint → EVSE → Session
+├── User → Session, PartnerInvite
+├── Partner → ChargePoint (owned), PartnerInvite (users)
+└── Tariff, SubscriptionPlan
+```
+
+**Common Use Cases:**
+
+| Task | Key Endpoints |
+|------|---------------|
+| Charge point stats | `sessions?filter[chargePointId]=`, `sessions/{id}/consumption-stats` |
+| User billing | `sessions?filter[userId]=`, `transactions?filter[userId]=`, `receipts` |
+| Fleet management | `charge-points?filter[partnerId]=`, `partner-invites`, `partner-revenues` |
+| Start/stop charging | `actions/charge-point/{id}/start/{evse}`, `actions/charge-point/{id}/stop/{session}` |
+
+See `reference/data-model.md` for detailed relationships and recipes.
+
+---
+
 ## Common Patterns
 
 ### Pagination
@@ -206,6 +231,7 @@ Status codes: 401 (Unauthorized), 403 (Forbidden), 404 (Not Found), 422 (Validat
 
 ## Reference Files
 
+- `reference/data-model.md` - Entity relationships and use case recipes
 - `reference/endpoints-index.md` - Complete list of all endpoints
 - `reference/schemas-index.md` - Schema summaries
 - `reference/deprecation-map.md` - Deprecated endpoints
