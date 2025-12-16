@@ -114,6 +114,93 @@ echo "$SPEC_JSON" | jq -r '
 ' >> "$REFERENCE_DIR/schemas-index.md"
 
 # ============================================
+# Generate request-schemas-index.md (CREATE/UPDATE schemas)
+# ============================================
+echo "Generating request-schemas-index.md..."
+
+cat > "$REFERENCE_DIR/request-schemas-index.md" << 'HEADER'
+# Request Body Schemas Index
+
+HEADER
+
+echo "Auto-generated from AMPECO Public API spec v$API_VERSION" >> "$REFERENCE_DIR/request-schemas-index.md"
+echo "" >> "$REFERENCE_DIR/request-schemas-index.md"
+echo "This document contains the request body schemas for POST (CREATE) and PUT/PATCH (UPDATE) endpoints." >> "$REFERENCE_DIR/request-schemas-index.md"
+echo "" >> "$REFERENCE_DIR/request-schemas-index.md"
+echo "---" >> "$REFERENCE_DIR/request-schemas-index.md"
+echo "" >> "$REFERENCE_DIR/request-schemas-index.md"
+
+# Extract POST request schemas with proper allOf merging
+echo "$SPEC_JSON" | jq -r '
+  # Helper function to merge allOf schemas
+  def merge_allof:
+    if .allOf then
+      # Merge all schemas in allOf array
+      reduce .allOf[] as $item (
+        {properties: {}, required: []};
+        .properties += ($item.properties // {}) |
+        .required += ($item.required // [])
+      ) | .required |= unique
+    else
+      .
+    end;
+
+  # Helper function to format a property
+  def format_property($key; $prop):
+    "- `" + $key + "`" +
+    (if $prop.type then " (" + $prop.type + ")" else "" end) +
+    (if $prop.nullable then " (nullable)" else "" end) +
+    (if $prop.readOnly then " (read-only)" else "" end) +
+    (if $prop.description then ": " + $prop.description else "" end);
+
+  # Helper function to format nested object properties
+  def format_nested_properties($prefix; $props; $indent):
+    $props | to_entries[] |
+    $indent + format_property($prefix + .key; .value) +
+    (if .value.type == "object" and .value.properties then
+      "\n" + format_nested_properties($prefix + .key + "."; .value.properties; $indent + "  ")
+    else "" end);
+
+  [.paths | to_entries[] |
+   .key as $path |
+   (.value | to_entries[] | select(.key == "post" or .key == "put" or .key == "patch")) |
+   select(.value.requestBody != null) |
+   {
+     path: $path,
+     method: (.key | ascii_upcase),
+     summary: .value.summary,
+     schema: (.value.requestBody.content."application/json".schema | merge_allof)
+   }
+  ] |
+  sort_by(.path + .method) |
+  .[] |
+  "## " + .method + " " + .path + "\n\n" +
+  "**Summary**: " + .summary + "\n\n" +
+  "**Request Body Schema**:\n\n" +
+  (if .schema.properties then
+    "**Properties**:\n\n" +
+    ([.schema.properties | to_entries[] |
+      format_property(.key; .value) +
+      (if .value.type == "object" and .value.properties then
+        "\n" + format_nested_properties(.key + "."; .value.properties; "  ")
+      else "" end)
+    ] | join("\n")) + "\n\n" +
+    (if .schema.required and (.schema.required | length > 0) then
+      "**Required**: " + (.schema.required | join(", ")) + "\n\n"
+    else "" end)
+  elif .schema.oneOf or .schema.anyOf then
+    "**Note**: This schema uses `" + (if .schema.oneOf then "oneOf" else "anyOf" end) + "` (multiple possible structures).\n\n" +
+    "```json\n" + (.schema | tojson) + "\n```\n\n"
+  else
+    "```json\n" + (.schema | tojson) + "\n```\n\n"
+  end) +
+  "---\n\n"
+' >> "$REFERENCE_DIR/request-schemas-index.md"
+
+REQUEST_SCHEMA_COUNT=$(echo "$SPEC_JSON" | jq '[.paths | to_entries[] | (.value | to_entries[] | select(.key == "post" or .key == "put" or .key == "patch")) | select(.value.requestBody != null)] | length')
+echo "Generated request-schemas-index.md with $REQUEST_SCHEMA_COUNT request schemas (POST/PUT/PATCH)"
+
+# ============================================
 # Generate deprecation-map.md
 # ============================================
 echo "Generating deprecation-map.md..."
@@ -228,6 +315,7 @@ echo ""
 echo "Generated files:"
 echo "  - $REFERENCE_DIR/endpoints-index.md ($ENDPOINT_COUNT endpoints)"
 echo "  - $REFERENCE_DIR/schemas-index.md ($SCHEMA_COUNT schemas)"
+echo "  - $REFERENCE_DIR/request-schemas-index.md ($REQUEST_SCHEMA_COUNT POST request schemas)"
 echo "  - $REFERENCE_DIR/deprecation-map.md ($DEPRECATED_COUNT deprecated)"
 echo "  - Updated SKILL.md quick index"
 echo ""

@@ -1,6 +1,6 @@
 # Schema Reference Index
 
-Auto-generated from AMPECO Public API spec v3.106.5
+Auto-generated from AMPECO Public API spec v3.110.0
 
 **Total Schemas**: 14
 

@@ -77,7 +77,7 @@ curl -H "Authorization: Bearer {your-api-token}" \
 
 | Resource | Version | Operations |
 |----------|---------|------------|
-| **Authorizations** | v1.0, 2.0 | Read |
+| **Authorizations** | v1.0, 2.0, 2.1 | Read |
 | **Booking Requests** | v1.0 | Create, Read |
 | **Bookings** | v1.0 | Read |
 | **Cdrs** | v2.0 | Read |
