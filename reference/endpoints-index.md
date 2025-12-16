@@ -1,8 +1,8 @@
 # Public API Endpoints Index
 
-Auto-generated from AMPECO Public API spec v3.106.5
+Auto-generated from AMPECO Public API spec v3.110.0
 
-**Total Endpoints**: 449
+**Total Endpoints**: 452
 
 ---
 
@@ -39,6 +39,7 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/delete-certificate` | Charge Point / Delete Certificate | No |
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/install-certificate` | Charge Point / Install Certificate | No |
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/set-configuration` | Charge Point / Set Configuration | No |
+| POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/set-security-profile` | Charge Point / Set Security Profile | No |
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/sync-certificates` | Charge Point / Get Installed Certificate IDs | No |
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/update-firmware` | Charge Point / Update Firmware | No |
 
@@ -178,8 +179,10 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
 | GET | `/public-api/resources/authorizations/v1.0/{authorization}` | Authorization / Read | Yes |
-| GET | `/public-api/resources/authorizations/v2.0` | Authorizations / Listing | No |
-| GET | `/public-api/resources/authorizations/v2.0/{authorization}` | Authorization / Read | No |
+| GET | `/public-api/resources/authorizations/v2.0` | Authorizations / Listing | Yes |
+| GET | `/public-api/resources/authorizations/v2.0/{authorization}` | Authorization / Read | Yes |
+| GET | `/public-api/resources/authorizations/v2.1` | Authorizations / Listing | No |
+| GET | `/public-api/resources/authorizations/v2.1/{authorization}` | Authorization / Read | No |
 
 ## resource / booking requests
 

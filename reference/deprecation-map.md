@@ -1,8 +1,8 @@
 # Deprecation Map
 
-Auto-generated from AMPECO Public API spec v3.106.5
+Auto-generated from AMPECO Public API spec v3.110.0
 
-**Total Deprecated Endpoints**: 67
+**Total Deprecated Endpoints**: 69
 
 | Method | Deprecated Endpoint |
 |--------|---------------------|
@@ -12,6 +12,8 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | PUT | `/public-api/notifications/v1.0/{notification}` |
 | DELETE | `/public-api/notifications/v1.0/{notification}` |
 | GET | `/public-api/resources/authorizations/v1.0/{authorization}` |
+| GET | `/public-api/resources/authorizations/v2.0` |
+| GET | `/public-api/resources/authorizations/v2.0/{authorization}` |
 | GET | `/public-api/resources/charge-points/v1.0` |
 | POST | `/public-api/resources/charge-points/v1.0` |
 | GET | `/public-api/resources/charge-points/v1.0/{chargePoint}` |
