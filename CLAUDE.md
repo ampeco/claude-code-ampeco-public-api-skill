@@ -17,9 +17,9 @@ ampeco-public-api/
 ├── scripts/
 │   └── fetch-and-generate.sh     # Updates reference docs from OpenAPI spec
 └── reference/
-    ├── endpoints-index.md        # All 449+ API endpoints by resource
+    ├── endpoints-index.md        # All 514+ API endpoints by resource
     ├── schemas-index.md          # Schema definitions with properties
-    ├── deprecation-map.md        # Deprecated endpoints (67+)
+    ├── deprecation-map.md        # Deprecated endpoints (80+)
     ├── common-patterns.md        # Auth, pagination, filtering, errors
     └── data-model.md             # Entity relationships and use cases
 ```
@@ -37,7 +37,7 @@ bash scripts/fetch-and-generate.sh
 **Prerequisites**: `curl` and `jq` must be installed
 
 This script:
-1. Fetches latest spec from https://developers.ampeco.com/openapi/
+1. Fetches latest spec from https://developers.ampeco.com/openapi/public-api.yaml
 2. Regenerates `endpoints-index.md`, `schemas-index.md`, `deprecation-map.md`
 3. Updates the quick index table in `SKILL.md`
 
