@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_DIR="$(dirname "$SCRIPT_DIR")"
 REFERENCE_DIR="$SKILL_DIR/reference"
 
-OPENAPI_INDEX="https://developers.ampeco.com/openapi/"
+SPEC_URL="https://developers.ampeco.com/openapi/public-api.yaml"
 
 echo "=== AMPECO Public API Documentation Generator ==="
 echo ""
@@ -14,23 +14,12 @@ echo ""
 command -v curl >/dev/null 2>&1 || { echo "Error: curl is required"; exit 1; }
 command -v jq >/dev/null 2>&1 || { echo "Error: jq is required. Install with: brew install jq"; exit 1; }
 
-echo "Fetching AMPECO Public API spec..."
+echo "Fetching AMPECO Public API spec from $SPEC_URL..."
 
-# 1. Get latest spec ID from index page (versions listed oldest→newest, so use tail -1)
-SPEC_ID=$(curl -s "$OPENAPI_INDEX" | grep -oE 'href="/openapi/[a-f0-9]+"' | tail -1 | grep -oE '[a-f0-9]{24}')
-
-if [ -z "$SPEC_ID" ]; then
-    echo "Error: Could not find latest spec ID"
-    exit 1
-fi
-
-echo "Found latest spec ID: $SPEC_ID"
-
-# 2. Fetch OpenAPI JSON
-SPEC_URL="https://developers.ampeco.com/openapi/$SPEC_ID"
+# Fetch OpenAPI spec (served as JSON despite .yaml extension)
 SPEC_JSON=$(curl -s "$SPEC_URL")
 
-# 3. Extract and verify API version
+# Extract and verify API version
 API_VERSION=$(echo "$SPEC_JSON" | jq -r '.info.version')
 if [ -z "$API_VERSION" ] || [ "$API_VERSION" = "null" ]; then
     echo "Error: Could not extract API version from spec"
@@ -38,7 +27,7 @@ if [ -z "$API_VERSION" ] || [ "$API_VERSION" = "null" ]; then
 fi
 echo "API Version: $API_VERSION"
 
-# 4. Ensure output directories exist
+# Ensure output directories exist
 mkdir -p "$REFERENCE_DIR"
 
 # ============================================

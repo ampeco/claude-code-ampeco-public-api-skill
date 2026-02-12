@@ -1,8 +1,8 @@
 # Schema Reference Index
 
-Auto-generated from AMPECO Public API spec v3.106.5
+Auto-generated from AMPECO Public API spec v3.139.0
 
-**Total Schemas**: 14
+**Total Schemas**: 18
 
 ---
 
@@ -20,11 +20,21 @@ Auto-generated from AMPECO Public API spec v3.106.5
 
 ---
 
+## IssueChangedNotification
+
+**Type**: object
+
+**Properties**: action, issueId, notification, status, updatedAt, workflowState
+
+**Required**: notification, issueId, action, updatedAt
+
+---
+
 ## Session
 
 **Type**: object
 
-**Properties**: amount, authorization, authorizationId, billingStatus, bookingId, chargePointId, chargePointOperatorRoamingId, chargingPeriods, clockAlignedEnergyConsumption, connectorId, currency, electricityCost, energy, energyConsumption, estimatedSavings, evseId, evsePhysicalReference, extendedBySessionId, extendingSessionId, externalAppData, externalSessionId, id, idTag, idTagLabel, lastUpdatedAt, nonBillableEnergy, originalSessionId, paymentMethodId, paymentStatus, paymentStatusUpdatedAt, paymentType, power, powerKw, priceBreakdown, randomisedDelay, reason, receiptId, reimbursementEligibility, roaming, socPercent, startedAt, status, stoppedAt, tariffSnapshotId, tax, terminalId, totalAmount, userId
+**Properties**: amount, authorization, authorizationId, billingStatus, bookingId, chargePointId, chargePointOperatorRoamingId, chargingPeriods, clockAlignedEnergyConsumption, connectorId, currency, electricityCost, energy, energyConsumption, estimatedSavings, evseId, evsePhysicalReference, extendedBySessionId, extendingSessionId, externalAppData, externalSessionId, id, idTag, idTagLabel, idTagType, lastUpdatedAt, nonBillableEnergy, originalSessionId, paymentMethodId, paymentStatus, paymentStatusUpdatedAt, paymentType, power, powerKw, priceBreakdown, randomisedDelay, reason, receiptId, reimbursementEligibility, roaming, socPercent, startedAt, status, stoppedAt, tariffSnapshotId, tax, terminalId, totalAmount, userId
 
 **Required**: id, status, userId, authorizationId, energy, energyConsumption, chargePointId, evseId, startedAt, billingStatus
 
@@ -34,7 +44,7 @@ Auto-generated from AMPECO Public API spec v3.106.5
 
 **Type**: object
 
-**Properties**: lastUpdatedAt, name, partnerId, tariffIds
+**Properties**: display, lastUpdatedAt, name, partnerId, tariffIds
 
 **Required**: name
 
@@ -126,7 +136,7 @@ Auto-generated from AMPECO Public API spec v3.106.5
 
 **Properties**: enabled, integrationId, preferences, type
 
-**Required**: type
+**Required**: type, preferences, integrationId
 
 ---
 
@@ -137,6 +147,32 @@ Auto-generated from AMPECO Public API spec v3.106.5
 **Properties**: electricityRateId, enabled, preferences, type
 
 **Required**: type, electricityRateId, preferences
+
+---
+
+## PartnerAdmin-read
+
+**Type**: object
+
+**Properties**: adminType, createdAt, email, id, locale, locationIds, name, roleId, updatedAt, whitelistedIps
+
+---
+
+## PartnerAdmin-create
+
+**Type**: object
+
+**Properties**: adminType, email, locale, locationIds, name, password, passwordConfirmation, roleId, whitelistedIps
+
+**Required**: name, email, password, passwordConfirmation, adminType, roleId
+
+---
+
+## PartnerAdmin-update
+
+**Type**: object
+
+**Properties**: email, locale, locationIds, name, password, passwordConfirmation, roleId, whitelistedIps
 
 ---
 

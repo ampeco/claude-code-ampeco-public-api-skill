@@ -1,8 +1,8 @@
 # Public API Endpoints Index
 
-Auto-generated from AMPECO Public API spec v3.106.5
+Auto-generated from AMPECO Public API spec v3.139.0
 
-**Total Endpoints**: 449
+**Total Endpoints**: 514
 
 ---
 
@@ -39,6 +39,7 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/delete-certificate` | Charge Point / Delete Certificate | No |
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/install-certificate` | Charge Point / Install Certificate | No |
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/set-configuration` | Charge Point / Set Configuration | No |
+| POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/set-security-profile` | Charge Point / Set Security Profile | No |
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/sync-certificates` | Charge Point / Get Installed Certificate IDs | No |
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/update-firmware` | Charge Point / Update Firmware | No |
 
@@ -88,6 +89,12 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | POST | `/public-api/actions/installer-job/v1.0/{installerJob}/assign-charge-points` | Actions / Assign Charge Points | No |
 | POST | `/public-api/actions/installer-job/v1.0/{installerJob}/change-status` | Actions / Change Status | No |
 
+## action / invoice
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/invoice/v1.0/{invoice}/update-external-id` | Invoice / Update External ID | No |
+
 ## action / location
 
 | Method | Path | Summary | Deprecated |
@@ -105,6 +112,12 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
 | POST | `/public-api/actions/parking-spaces/v1.0/{parkingSpace}/update-occupancy-status` | Parking Space / Update occupancy status | No |
+
+## action / partner settlement report
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/partner-settlement-report/v1.0/{partnerSettlementReport}/update-external-id` | Partner Settlement Report / Update External ID | No |
 
 ## action / reservation
 
@@ -158,6 +171,13 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | GET | `/public-api/actions/users/v2.0/{user}/export-all-private-data` | User / Export All Private Data | No |
 | POST | `/public-api/actions/users/v2.0/{user}/redeem-voucher` | User / Redeem Voucher | No |
 
+## logs / communication
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/logs/communication/v1.0` | Communication logs / Listing | No |
+| GET | `/public-api/logs/communication/v1.0/{id}` | Communication log / Read | No |
+
 ## notifications
 
 | Method | Path | Summary | Deprecated |
@@ -173,13 +193,23 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | PUT | `/public-api/notifications/v2.0/{notification}` | Notifications / Update | No |
 | DELETE | `/public-api/notifications/v2.0/{notification}` | Notifications / Unsubscribe | No |
 
+## resource / admins
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/admins/v1.0` | Admins / Listing | No |
+| GET | `/public-api/resources/admins/v1.0/{admin}` | Admin / Read | No |
+| GET | `/public-api/resources/admins/v1.0/{admin}/permissions` | Admin / Permissions | No |
+
 ## resource / authorizations
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
 | GET | `/public-api/resources/authorizations/v1.0/{authorization}` | Authorization / Read | Yes |
-| GET | `/public-api/resources/authorizations/v2.0` | Authorizations / Listing | No |
-| GET | `/public-api/resources/authorizations/v2.0/{authorization}` | Authorization / Read | No |
+| GET | `/public-api/resources/authorizations/v2.0` | Authorizations / Listing | Yes |
+| GET | `/public-api/resources/authorizations/v2.0/{authorization}` | Authorization / Read | Yes |
+| GET | `/public-api/resources/authorizations/v2.1` | Authorizations / Listing | No |
+| GET | `/public-api/resources/authorizations/v2.1/{authorization}` | Authorization / Read | No |
 
 ## resource / booking requests
 
@@ -212,6 +242,7 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | GET | `/public-api/resources/charge-point-downtime-periods/v1.0/{chargePointDowntimePeriod}` | Charge Point Downtime Period / Read | No |
 | PATCH | `/public-api/resources/charge-point-downtime-periods/v1.0/{chargePointDowntimePeriod}` | Charge Point Downtime Period / Update | No |
 | DELETE | `/public-api/resources/charge-point-downtime-periods/v1.0/{chargePointDowntimePeriod}` | Charge Point Downtime Period / Delete | No |
+| GET | `/public-api/resources/charge-point-downtime-periods/v1.0/{chargePointDowntimePeriod}/status-log` | Charge Point Downtime Period / Status Log | No |
 
 ## resource / charge point models
 
@@ -279,6 +310,11 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/latest-hardware-status-log` | Charge Point / Latest Hardware Status Log | No |
 | GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/latest-network-status-log` | Charge Point / Latest Network Status Log | No |
 | GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/network-status-logs` | Charge Point / Network Status Logs / Listing | No |
+| GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/notes` | Charge Point / Notes / Listing | No |
+| POST | `/public-api/resources/charge-points/v2.0/{chargePoint}/notes` | Charge Point / Note / Create | No |
+| GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/notes/{note}` | Charge Point / Note / Read | No |
+| PATCH | `/public-api/resources/charge-points/v2.0/{chargePoint}/notes/{note}` | Charge Point / Note / Update | No |
+| DELETE | `/public-api/resources/charge-points/v2.0/{chargePoint}/notes/{note}` | Charge Point / Note / Delete | No |
 | GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/personal-smart-charging-preferences` | Charge Point / Personal smart charging preferences / Read | No |
 | POST | `/public-api/resources/charge-points/v2.0/{chargePoint}/personal-smart-charging-preferences` | Charge Point / Personal smart charging preferences / Update | No |
 | GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/shared-partners` | Charge Point / Shared Partners / Listing | No |
@@ -328,6 +364,12 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | POST | `/public-api/resources/configuration-templates/v1.0/{template}/variables` | Configuration Template Variable / Create | No |
 | PATCH | `/public-api/resources/configuration-templates/v1.0/{template}/variables/{variable}` | Configuration Template Variable / Update | No |
 | DELETE | `/public-api/resources/configuration-templates/v1.0/{template}/variables/{variable}` | Configuration Template Variable / Delete | No |
+
+## resource / consent-history
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/consent-history/v1.0` | Consent History / Listing | No |
 
 ## resource / consents
 
@@ -426,6 +468,7 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | GET | `/public-api/resources/evse-downtime-periods/v1.0/{evseDowntimePeriod}` | EVSE Downtime Period / Read | No |
 | PATCH | `/public-api/resources/evse-downtime-periods/v1.0/{evseDowntimePeriod}` | EVSE Downtime Period / Update | No |
 | DELETE | `/public-api/resources/evse-downtime-periods/v1.0/{evseDowntimePeriod}` | EVSE Downtime Period / Delete | No |
+| GET | `/public-api/resources/evse-downtime-periods/v1.0/{evseDowntimePeriod}/status-log` | EVSE Downtime Period / Status Log | No |
 
 ## resource / evses
 
@@ -436,6 +479,11 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | PUT | `/public-api/resources/evses/v2.0/{evse}` | EVSE / Update | Yes |
 | GET | `/public-api/resources/evses/v2.0/{evse}/hardware-status-logs` | EVSE / Hardware Status Logs / Listing | No |
 | GET | `/public-api/resources/evses/v2.0/{evse}/latest-hardware-status-log` | EVSE / Latest Hardware Status Log | No |
+| GET | `/public-api/resources/evses/v2.0/{evse}/notes` | EVSE / Notes / Listing | No |
+| POST | `/public-api/resources/evses/v2.0/{evse}/notes` | EVSE / Note / Create | No |
+| GET | `/public-api/resources/evses/v2.0/{evse}/notes/{note}` | EVSE / Note / Read | No |
+| PATCH | `/public-api/resources/evses/v2.0/{evse}/notes/{note}` | EVSE / Note / Update | No |
+| DELETE | `/public-api/resources/evses/v2.0/{evse}/notes/{note}` | EVSE / Note / Delete | No |
 | POST | `/public-api/resources/evses/v2.1` | EVSE / Create | No |
 | GET | `/public-api/resources/evses/v2.1` | EVSEs / Listing | No |
 | PATCH | `/public-api/resources/evses/v2.1/{evse}` | EVSE / Update | No |
@@ -489,6 +537,16 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | PATCH | `/public-api/resources/id-tags/v2.0/{idTag}` | Id Tag / Update | No |
 | DELETE | `/public-api/resources/id-tags/v2.0/{idTag}` | Id Tag / Delete | No |
 
+## resource / installation and maintenance companies
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/installation-and-maintenance-companies/v1.0` | Installation And Maintenance Companies / Listing | No |
+| POST | `/public-api/resources/installation-and-maintenance-companies/v1.0` | Installation And Maintenance Companies / Create | No |
+| GET | `/public-api/resources/installation-and-maintenance-companies/v1.0/{imCompany}` | Installation And Maintenance Companies / Read | No |
+| PATCH | `/public-api/resources/installation-and-maintenance-companies/v1.0/{imCompany}` | Installation And Maintenance Companies / Update | No |
+| DELETE | `/public-api/resources/installation-and-maintenance-companies/v1.0/{imCompany}` | Installation And Maintenance Companies / Delete | No |
+
 ## resource / installer jobs
 
 | Method | Path | Summary | Deprecated |
@@ -505,6 +563,16 @@ Auto-generated from AMPECO Public API spec v3.106.5
 |--------|------|---------|------------|
 | GET | `/public-api/resources/invoices/v1.0` | Invoices / Listing | No |
 | GET | `/public-api/resources/invoices/v1.0/{invoice}` | Invoice / Read | No |
+
+## resource / issues
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/issues/v1.0` | Issues / Listing | No |
+| POST | `/public-api/resources/issues/v1.0` | Issues / Create | No |
+| GET | `/public-api/resources/issues/v1.0/{issue}` | Issue / Read | No |
+| PATCH | `/public-api/resources/issues/v1.0/{issue}` | Issue / Update | No |
+| DELETE | `/public-api/resources/issues/v1.0/{issue}` | Issue / Delete | No |
 
 ## resource / locations
 
@@ -525,6 +593,11 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | GET | `/public-api/resources/locations/v2.0/{location}/charging-zones/{chargingZone}` | Location / Charging Zone / Read | No |
 | PATCH | `/public-api/resources/locations/v2.0/{location}/charging-zones/{chargingZone}` | Location / Charging Zones / Update | No |
 | DELETE | `/public-api/resources/locations/v2.0/{location}/charging-zones/{chargingZone}` | Location / Charging Zone / Delete | No |
+| GET | `/public-api/resources/locations/v2.0/{location}/notes` | Location / Notes / Listing | No |
+| POST | `/public-api/resources/locations/v2.0/{location}/notes` | Location / Note / Create | No |
+| GET | `/public-api/resources/locations/v2.0/{location}/notes/{note}` | Location / Note / Read | No |
+| PATCH | `/public-api/resources/locations/v2.0/{location}/notes/{note}` | Location / Note / Update | No |
+| DELETE | `/public-api/resources/locations/v2.0/{location}/notes/{note}` | Location / Note / Delete | No |
 
 ## resource / parking spaces
 
@@ -532,9 +605,12 @@ Auto-generated from AMPECO Public API spec v3.106.5
 |--------|------|---------|------------|
 | POST | `/public-api/resources/parking-spaces/v1.0` | Parking Space / Create | No |
 | GET | `/public-api/resources/parking-spaces/v1.0` | Parking Space / Listing | No |
-| PUT | `/public-api/resources/parking-spaces/v1.0/{parkingSpace}` | Parking Space / Update | No |
+| PUT | `/public-api/resources/parking-spaces/v1.0/{parkingSpace}` | Parking Space / Update | Yes |
+| PATCH | `/public-api/resources/parking-spaces/v1.0/{parkingSpace}` | Parking Space / Update | No |
 | GET | `/public-api/resources/parking-spaces/v1.0/{parkingSpace}` | Parking Space / Read | No |
 | DELETE | `/public-api/resources/parking-spaces/v1.0/{parkingSpace}` | Parking Space / Delete | No |
+| GET | `/public-api/resources/parking-spaces/v1.0/{parkingSpace}/evses` | Parking Space / EVSEs / Listing | No |
+| PUT | `/public-api/resources/parking-spaces/v1.0/{parkingSpace}/evses` | Parking Space / EVSEs / Update | No |
 
 ## resource / partner contracts
 
@@ -582,16 +658,30 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | GET | `/public-api/resources/partners/v2.0/{partner}` | Partner / Read | No |
 | PATCH | `/public-api/resources/partners/v2.0/{partner}` | Partner / Update | No |
 | DELETE | `/public-api/resources/partners/v2.0/{partner}` | Partner / Delete | No |
+| GET | `/public-api/resources/partners/v2.0/{partner}/admins` | Partner / Admins / Listing | No |
+| POST | `/public-api/resources/partners/v2.0/{partner}/admins` | Partner / Admin / Create | No |
+| PATCH | `/public-api/resources/partners/v2.0/{partner}/admins/{admin}` | Partner / Admin / Update | No |
+| DELETE | `/public-api/resources/partners/v2.0/{partner}/admins/{admin}` | Partner / Admin / Delete | No |
+| GET | `/public-api/resources/partners/v2.0/{partner}/notes` | Partner / Notes / Listing | No |
+| POST | `/public-api/resources/partners/v2.0/{partner}/notes` | Partner / Note / Create | No |
+| GET | `/public-api/resources/partners/v2.0/{partner}/notes/{note}` | Partner / Note / Read | No |
+| PATCH | `/public-api/resources/partners/v2.0/{partner}/notes/{note}` | Partner / Note / Update | No |
+| DELETE | `/public-api/resources/partners/v2.0/{partner}/notes/{note}` | Partner / Note / Delete | No |
 
 ## resource / payment terminals
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
-| GET | `/public-api/resources/payment-terminals/v1.0` | Payment Terminals / Listing | No |
-| POST | `/public-api/resources/payment-terminals/v1.0` | Payment Terminals / Create | No |
-| GET | `/public-api/resources/payment-terminals/v1.0/{paymentTerminal}` | Payment Terminals / Read | No |
-| PATCH | `/public-api/resources/payment-terminals/v1.0/{paymentTerminal}` | Payment Terminals / Update | No |
-| DELETE | `/public-api/resources/payment-terminals/v1.0/{paymentTerminal}` | Payment Terminals / Delete | No |
+| GET | `/public-api/resources/payment-terminals/v1.0` | Payment Terminals / Listing | Yes |
+| POST | `/public-api/resources/payment-terminals/v1.0` | Payment Terminals / Create | Yes |
+| GET | `/public-api/resources/payment-terminals/v1.0/{paymentTerminal}` | Payment Terminals / Read | Yes |
+| PATCH | `/public-api/resources/payment-terminals/v1.0/{paymentTerminal}` | Payment Terminals / Update | Yes |
+| DELETE | `/public-api/resources/payment-terminals/v1.0/{paymentTerminal}` | Payment Terminals / Delete | Yes |
+| GET | `/public-api/resources/payment-terminals/v1.1` | Payment Terminals / Listing | No |
+| POST | `/public-api/resources/payment-terminals/v1.1` | Payment Terminals / Create | No |
+| GET | `/public-api/resources/payment-terminals/v1.1/{paymentTerminal}` | Payment Terminals / Read | No |
+| PATCH | `/public-api/resources/payment-terminals/v1.1/{paymentTerminal}` | Payment Terminals / Update | No |
+| DELETE | `/public-api/resources/payment-terminals/v1.1/{paymentTerminal}` | Payment Terminals / Delete | No |
 
 ## resource / provisioning certificate
 
@@ -716,6 +806,11 @@ Auto-generated from AMPECO Public API spec v3.106.5
 |--------|------|---------|------------|
 | GET | `/public-api/resources/sub-operators/v1.0` | Sub operators / Listing | No |
 | GET | `/public-api/resources/sub-operators/v1.0/{subOperator}` | Sub operator / Read | No |
+| GET | `/public-api/resources/sub-operators/v2.0/{subOperator}/notes` | Sub Operator / Notes / Listing | No |
+| POST | `/public-api/resources/sub-operators/v2.0/{subOperator}/notes` | Sub Operator / Note / Create | No |
+| GET | `/public-api/resources/sub-operators/v2.0/{subOperator}/notes/{note}` | Sub Operator / Note / Read | No |
+| PATCH | `/public-api/resources/sub-operators/v2.0/{subOperator}/notes/{note}` | Sub Operator / Note / Update | No |
+| DELETE | `/public-api/resources/sub-operators/v2.0/{subOperator}/notes/{note}` | Sub Operator / Note / Delete | No |
 
 ## resource / subscription-plans
 
@@ -817,11 +912,11 @@ Auto-generated from AMPECO Public API spec v3.106.5
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
-| GET | `/public-api/resources/users/v1.0` | Users / Listing | No |
-| POST | `/public-api/resources/users/v1.0` | User / Create | No |
-| GET | `/public-api/resources/users/v1.0/{user}` | User / Read | No |
-| PATCH | `/public-api/resources/users/v1.0/{user}` | User / Update | No |
-| DELETE | `/public-api/resources/users/v1.0/{user}` | User / Delete | No |
+| GET | `/public-api/resources/users/v1.0` | Users / Listing | Yes |
+| POST | `/public-api/resources/users/v1.0` | User / Create | Yes |
+| GET | `/public-api/resources/users/v1.0/{user}` | User / Read | Yes |
+| PATCH | `/public-api/resources/users/v1.0/{user}` | User / Update | Yes |
+| DELETE | `/public-api/resources/users/v1.0/{user}` | User / Delete | Yes |
 | GET | `/public-api/resources/users/v1.0/{user}/invoice-details` | Invoice details / Read | No |
 | POST | `/public-api/resources/users/v1.0/{user}/invoice-details` | Invoice details / Create or update | No |
 | GET | `/public-api/resources/users/v1.0/{user}/payment-methods` | Payment Methods / Listing | No |
@@ -829,6 +924,11 @@ Auto-generated from AMPECO Public API spec v3.106.5
 | GET | `/public-api/resources/users/v1.0/{user}/payment-methods/{paymentMethodId}` | Payment Method / Read | No |
 | PATCH | `/public-api/resources/users/v1.0/{user}/payment-methods/{paymentMethodId}` | Payment Method / Update | No |
 | DELETE | `/public-api/resources/users/v1.0/{user}/payment-methods/{paymentMethodId}` | Payment Method / Delete | No |
+| GET | `/public-api/resources/users/v1.1` | Users / Listing | No |
+| POST | `/public-api/resources/users/v1.1` | User / Create | No |
+| GET | `/public-api/resources/users/v1.1/{user}` | User / Read | No |
+| PATCH | `/public-api/resources/users/v1.1/{user}` | User / Update | No |
+| DELETE | `/public-api/resources/users/v1.1/{user}` | User / Delete | No |
 
 ## resource / utilities
 

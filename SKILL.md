@@ -77,7 +77,8 @@ curl -H "Authorization: Bearer {your-api-token}" \
 
 | Resource | Version | Operations |
 |----------|---------|------------|
-| **Authorizations** | v1.0, 2.0 | Read |
+| **Admins** | v1.0 | Read |
+| **Authorizations** | v1.0, 2.0, 2.1 | Read |
 | **Booking Requests** | v1.0 | Create, Read |
 | **Bookings** | v1.0 | Read |
 | **Cdrs** | v2.0 | Read |
@@ -87,6 +88,7 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Charge Points** | v1.0, 2.0 | Create, Delete, Read, Update |
 | **Circuits** | v1.0, 2.0 | Create, Delete, Read, Update |
 | **Configuration Templates** | v1.0 | Create, Delete, Read, Update |
+| **Consent History** | v1.0 | Read |
 | **Consents** | v1.0 | Create, Read |
 | **Contact Details** | v2.0 | Delete, Read, Update |
 | **Cp Models** | v1.0 | Create, Delete, Read, Update |
@@ -104,8 +106,10 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Flexibility Activation Requests** | v1.0 | Read |
 | **Flexibility Assets** | v1.0 | Create, Delete, Read, Update |
 | **Id Tags** | v2.0 | Create, Delete, Read, Update |
+| **Installation And Maintenance Companies** | v1.0 | Create, Delete, Read, Update |
 | **Installer Jobs** | v1.0 | Create, Delete, Read, Update |
 | **Invoices** | v1.0 | Read |
+| **Issues** | v1.0 | Create, Delete, Read, Update |
 | **Locations** | v1.0, 2.0 | Create, Delete, Read, Update |
 | **Parking Spaces** | v1.0 | Create, Delete, Read, Update |
 | **Partner Contracts** | v1.0 | Create, Delete, Read, Update |
@@ -114,7 +118,7 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Partner Revenues** | v1.0, 1.1 | Read |
 | **Partner Settlement Reports** | v1.0 | Create, Delete, Read, Update |
 | **Partners** | v1.0, 2.0 | Create, Delete, Read, Update |
-| **Payment Terminals** | v1.0 | Create, Delete, Read, Update |
+| **Payment Terminals** | v1.0, 1.1 | Create, Delete, Read, Update |
 | **Provisioning Certificates** | v2.0 | Create, Delete, Read, Update |
 | **Receipts** | v2.0 | Read |
 | **Reservations** | v1.0 | Read |
@@ -128,7 +132,7 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Security Events Log** | v2.0 | Read |
 | **Sessions** | v1.0 | Read |
 | **Settings** | v1.0 | Read |
-| **Sub Operators** | v1.0 | Read |
+| **Sub Operators** | v1.0, 2.0 | Create, Delete, Read, Update |
 | **Subscription Plans** | v1.0, 2.0 | Create, Delete, Read, Update |
 | **Subscriptions** | v1.0 | Read |
 | **Tariff Groups** | v1.0 | Create, Delete, Read, Update |
@@ -141,7 +145,7 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Top Up Packages** | v2.0 | Create, Delete, Read, Update |
 | **Transactions** | v1.0 | Create, Read, Update |
 | **User Groups** | v1.0 | Create, Delete, Read, Update |
-| **Users** | v1.0 | Create, Delete, Read, Update |
+| **Users** | v1.0, 1.1 | Create, Delete, Read, Update |
 | **Utilities** | v1.0 | Create, Delete, Read, Update |
 | **Vendor Error Codes** | v2.0 | Create, Delete, Read, Update |
 | **Vouchers** | v2.0, 2.1 | Create, Delete, Read, Update |
