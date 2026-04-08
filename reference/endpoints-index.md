@@ -1,8 +1,8 @@
 # Public API Endpoints Index
 
-Auto-generated from AMPECO Public API spec v3.139.0
+Auto-generated from AMPECO Public API spec v3.168.0
 
-**Total Endpoints**: 514
+**Total Endpoints**: 544
 
 ---
 
@@ -19,14 +19,19 @@ Auto-generated from AMPECO Public API spec v3.139.0
 |--------|------|---------|------------|
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/change-availability` | Charge Point / Change Availability | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/change-owner` | Charge Point / Change Owner | No |
+| POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/check-tariff-display-support` | Charge Point / Check Tariff Display Support | No |
+| POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/clear-cache` | Charge Point / Clear cache | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/clear-charging-profile` | Charge Point / Clear Charging Profile | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/disconnect` | Charge Point / Disconnect | No |
+| POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/get-composite-schedule` | Charge Point / Get Composite Schedule | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/get-diagnostics` | Charge Point / Get Diagnostics | No |
+| POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/get-local-list-version` | Charge Point / Get Local List Version | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/get-security-log` | Charge Point / Get Security Log | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/move-evses-to-satellite` | Charge Point / Move EVSEs to Satellite | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/reserve/{evse}` | Charge Point / Reserve | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/reset-security-profile` | Charge Point / Reset Security Profile | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/reset/{type}` | Charge Point / Reset | No |
+| POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/send-custom-ocpp` | Charge Point / Send Custom OCPP Command | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/send-data-transfer` | Charge Point / Send Data Transfer | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/set-charging-profile/{evseNetworkId}` | Charge Point / Set Charging Profile | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/start` | Charge Point / Start Charging Session Without EVSE | No |
@@ -136,6 +141,7 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
 | POST | `/public-api/actions/session/v1.0/{session}/assign-user` | Session / Assign to user | No |
+| POST | `/public-api/actions/session/v1.0/{session}/change-tariff` | Session / Change tariff | No |
 | POST | `/public-api/actions/session/v1.0/{session}/retry-payment` | Session / Retry Payment | No |
 
 ## action / subscription-plan
@@ -149,6 +155,12 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
 | POST | `/public-api/actions/tariffs/v2.0/{tariff}/set-tariff-display-information` | Tariff / Set Display Information | No |
+
+## action / tax
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/tax/v1.0/validate-vat` | Taxes / Validate VAT number | No |
 
 ## action / transaction
 
@@ -168,6 +180,7 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | POST | `/public-api/actions/users/v1.0/{user}/cancel-subscription` | User / Cancel subscription | No |
 | POST | `/public-api/actions/users/v1.0/{user}/change-status` | User / Change Status | No |
 | POST | `/public-api/actions/users/v1.0/{user}/clear-subscription-amount-due` | User / Clear subscription amount due | No |
+| POST | `/public-api/actions/users/v1.0/{user}/subscription-billing-period/{billingPeriod}/retry-payment` | Subscription billing period / Retry payment | No |
 | GET | `/public-api/actions/users/v2.0/{user}/export-all-private-data` | User / Export All Private Data | No |
 | POST | `/public-api/actions/users/v2.0/{user}/redeem-voucher` | User / Redeem Voucher | No |
 
@@ -177,6 +190,13 @@ Auto-generated from AMPECO Public API spec v3.139.0
 |--------|------|---------|------------|
 | GET | `/public-api/logs/communication/v1.0` | Communication logs / Listing | No |
 | GET | `/public-api/logs/communication/v1.0/{id}` | Communication log / Read | No |
+
+## logs / ocpi
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/logs/ocpi/v1.0` | OCPI Logs / Listing | No |
+| GET | `/public-api/logs/ocpi/v1.0/{id}` | OCPI Log / Read | No |
 
 ## notifications
 
@@ -343,6 +363,9 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | DELETE | `/public-api/resources/circuits/v2.0/{circuit}` | Circuit / Delete | No |
 | GET | `/public-api/resources/circuits/v2.0/{circuit}/charge-point-priorities` | Circuit / Charge Point Priorities / Listing | No |
 | GET | `/public-api/resources/circuits/v2.0/{circuit}/consumption` | Circuit / Consumption | No |
+| GET | `/public-api/resources/circuits/v2.0/{circuit}/schedule` | Circuit / Schedule / Read | No |
+| PUT | `/public-api/resources/circuits/v2.0/{circuit}/schedule` | Circuit / Schedule / Create or Update | No |
+| DELETE | `/public-api/resources/circuits/v2.0/{circuit}/schedule` | Circuit / Schedule / Delete | No |
 | GET | `/public-api/resources/circuits/v2.0/{circuit}/soc-priorities` | Circuit / SoC Priorities / Listing | No |
 | GET | `/public-api/resources/circuits/v2.0/{circuit}/unmanaged-load` | Circuit / Unmanaged Load / Read | No |
 | GET | `/public-api/resources/circuits/v2.0/{circuit}/user-priorities` | Circuits / User Priorities / Listing | No |
@@ -599,6 +622,13 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | PATCH | `/public-api/resources/locations/v2.0/{location}/notes/{note}` | Location / Note / Update | No |
 | DELETE | `/public-api/resources/locations/v2.0/{location}/notes/{note}` | Location / Note / Delete | No |
 
+## resource / operators
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/operators/v1.0` | Operators / Listing | No |
+| GET | `/public-api/resources/operators/v1.0/{operator}` | Operator / Read | No |
+
 ## resource / parking spaces
 
 | Method | Path | Summary | Deprecated |
@@ -620,6 +650,7 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | POST | `/public-api/resources/partner-contracts/v1.0` | Partner Contract / Create | No |
 | GET | `/public-api/resources/partner-contracts/v1.0/{partnerContract}` | Partner Contract / Read | No |
 | PUT | `/public-api/resources/partner-contracts/v1.0/{partnerContract}` | Partner Contract / Update | No |
+| PATCH | `/public-api/resources/partner-contracts/v1.0/{partnerContract}` | Partner Contract / Patch | No |
 | DELETE | `/public-api/resources/partner-contracts/v1.0/{partnerContract}` | Partner Contract / Delete | No |
 
 ## resource / partner invites
@@ -712,9 +743,11 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
 | GET | `/public-api/resources/partner-expenses/v1.0` | Expenses / Listing | Yes |
-| GET | `/public-api/resources/partner-expenses/v1.1` | Expenses / Listing | No |
+| GET | `/public-api/resources/partner-expenses/v1.1` | Expenses / Listing | Yes |
+| GET | `/public-api/resources/partner-expenses/v1.2` | Expenses / Listing | No |
 | GET | `/public-api/resources/partner-revenues/v1.0` | Revenues / Listing | Yes |
-| GET | `/public-api/resources/partner-revenues/v1.1` | Revenues / Listing | No |
+| GET | `/public-api/resources/partner-revenues/v1.1` | Revenues / Listing | Yes |
+| GET | `/public-api/resources/partner-revenues/v1.2` | Revenues / Listing | No |
 
 ## resource / rfids
 
@@ -804,8 +837,13 @@ Auto-generated from AMPECO Public API spec v3.139.0
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
-| GET | `/public-api/resources/sub-operators/v1.0` | Sub operators / Listing | No |
-| GET | `/public-api/resources/sub-operators/v1.0/{subOperator}` | Sub operator / Read | No |
+| GET | `/public-api/resources/sub-operators/v1.0` | Sub operators / Listing | Yes |
+| GET | `/public-api/resources/sub-operators/v1.0/{subOperator}` | Sub operator / Read | Yes |
+| GET | `/public-api/resources/sub-operators/v2.0` | Sub-operators / Listing | No |
+| POST | `/public-api/resources/sub-operators/v2.0` | Sub-operators / Create | No |
+| GET | `/public-api/resources/sub-operators/v2.0/{subOperator}` | Sub-operators / Read | No |
+| PATCH | `/public-api/resources/sub-operators/v2.0/{subOperator}` | Sub-operators / Update | No |
+| DELETE | `/public-api/resources/sub-operators/v2.0/{subOperator}` | Sub-operators / Delete | No |
 | GET | `/public-api/resources/sub-operators/v2.0/{subOperator}/notes` | Sub Operator / Notes / Listing | No |
 | POST | `/public-api/resources/sub-operators/v2.0/{subOperator}/notes` | Sub Operator / Note / Create | No |
 | GET | `/public-api/resources/sub-operators/v2.0/{subOperator}/notes/{note}` | Sub Operator / Note / Read | No |
@@ -924,11 +962,18 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | GET | `/public-api/resources/users/v1.0/{user}/payment-methods/{paymentMethodId}` | Payment Method / Read | No |
 | PATCH | `/public-api/resources/users/v1.0/{user}/payment-methods/{paymentMethodId}` | Payment Method / Update | No |
 | DELETE | `/public-api/resources/users/v1.0/{user}/payment-methods/{paymentMethodId}` | Payment Method / Delete | No |
+| GET | `/public-api/resources/users/v1.0/{user}/subscription-billing-periods` | Subscription billing periods / Listing | No |
+| GET | `/public-api/resources/users/v1.0/{user}/subscription-billing-periods/{billingPeriod}` | Subscription billing period / Read | No |
 | GET | `/public-api/resources/users/v1.1` | Users / Listing | No |
 | POST | `/public-api/resources/users/v1.1` | User / Create | No |
 | GET | `/public-api/resources/users/v1.1/{user}` | User / Read | No |
 | PATCH | `/public-api/resources/users/v1.1/{user}` | User / Update | No |
 | DELETE | `/public-api/resources/users/v1.1/{user}` | User / Delete | No |
+| GET | `/public-api/resources/users/v1.1/{user}/notes` | User / Notes / Listing | No |
+| POST | `/public-api/resources/users/v1.1/{user}/notes` | User / Note / Create | No |
+| GET | `/public-api/resources/users/v1.1/{user}/notes/{note}` | User / Note / Read | No |
+| PATCH | `/public-api/resources/users/v1.1/{user}/notes/{note}` | User / Note / Update | No |
+| DELETE | `/public-api/resources/users/v1.1/{user}/notes/{note}` | User / Note / Delete | No |
 
 ## resource / utilities
 

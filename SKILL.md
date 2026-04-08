@@ -111,11 +111,12 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Invoices** | v1.0 | Read |
 | **Issues** | v1.0 | Create, Delete, Read, Update |
 | **Locations** | v1.0, 2.0 | Create, Delete, Read, Update |
+| **Operators** | v1.0 | Read |
 | **Parking Spaces** | v1.0 | Create, Delete, Read, Update |
 | **Partner Contracts** | v1.0 | Create, Delete, Read, Update |
-| **Partner Expenses** | v1.0, 1.1 | Read |
+| **Partner Expenses** | v1.0, 1.1, 1.2 | Read |
 | **Partner Invites** | v1.0 | Create, Delete, Read, Update |
-| **Partner Revenues** | v1.0, 1.1 | Read |
+| **Partner Revenues** | v1.0, 1.1, 1.2 | Read |
 | **Partner Settlement Reports** | v1.0 | Create, Delete, Read, Update |
 | **Partners** | v1.0, 2.0 | Create, Delete, Read, Update |
 | **Payment Terminals** | v1.0, 1.1 | Create, Delete, Read, Update |

@@ -1,8 +1,8 @@
 # Schema Reference Index
 
-Auto-generated from AMPECO Public API spec v3.139.0
+Auto-generated from AMPECO Public API spec v3.168.0
 
-**Total Schemas**: 18
+**Total Schemas**: 19
 
 ---
 
@@ -34,19 +34,15 @@ Auto-generated from AMPECO Public API spec v3.139.0
 
 **Type**: object
 
-**Properties**: amount, authorization, authorizationId, billingStatus, bookingId, chargePointId, chargePointOperatorRoamingId, chargingPeriods, clockAlignedEnergyConsumption, connectorId, currency, electricityCost, energy, energyConsumption, estimatedSavings, evseId, evsePhysicalReference, extendedBySessionId, extendingSessionId, externalAppData, externalSessionId, id, idTag, idTagLabel, idTagType, lastUpdatedAt, nonBillableEnergy, originalSessionId, paymentMethodId, paymentStatus, paymentStatusUpdatedAt, paymentType, power, powerKw, priceBreakdown, randomisedDelay, reason, receiptId, reimbursementEligibility, roaming, socPercent, startedAt, status, stoppedAt, tariffSnapshotId, tax, terminalId, totalAmount, userId
+**Properties**: amount, authorization, authorizationId, billingCompletedAt, billingStatus, bookingId, chargePointId, chargePointOperatorRoamingId, chargingPeriods, clockAlignedEnergyConsumption, connectorId, currency, electricityCost, energy, energyConsumption, estimatedSavings, evseId, evsePhysicalReference, extendedBySessionId, extendingSessionId, externalAppData, externalSessionId, id, idTag, idTagLabel, idTagType, lastUpdatedAt, nonBillableEnergy, operatorId, originalSessionId, paymentMethodId, paymentStatus, paymentStatusUpdatedAt, paymentType, power, powerKw, priceBreakdown, randomisedDelay, reason, receiptId, reimbursementEligibility, roaming, socPercent, startedAt, status, stoppedAt, tariffSnapshotId, tax, terminalId, totalAmount, userId
 
-**Required**: id, status, userId, authorizationId, energy, energyConsumption, chargePointId, evseId, startedAt, billingStatus
+**Required**: id, operatorId, status, userId, authorizationId, energy, energyConsumption, chargePointId, evseId, startedAt, billingStatus
 
 ---
 
 ## TariffGroup
 
 **Type**: object
-
-**Properties**: display, lastUpdatedAt, name, partnerId, tariffIds
-
-**Required**: name
 
 ---
 
@@ -173,6 +169,16 @@ Auto-generated from AMPECO Public API spec v3.139.0
 **Type**: object
 
 **Properties**: email, locale, locationIds, name, password, passwordConfirmation, roleId, whitelistedIps
+
+---
+
+## SubscriptionBillingPeriod-read
+
+**Type**: object
+
+**Properties**: baseFee, chargePointFees, createdAt, currency, endedAt, firstPaymentFailureAt, id, latestPaymentFailureAt, latestPaymentFailureReason, obligationsTransferredAt, sessionFees, startedAt, subscriptionId, subscriptionPlanId, totalAmount
+
+**Required**: id, subscriptionPlanId, subscriptionId, startedAt, endedAt, totalAmount, baseFee, currency, createdAt
 
 ---
 

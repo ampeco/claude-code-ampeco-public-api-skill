@@ -1,8 +1,8 @@
 # Deprecation Map
 
-Auto-generated from AMPECO Public API spec v3.139.0
+Auto-generated from AMPECO Public API spec v3.168.0
 
-**Total Deprecated Endpoints**: 80
+**Total Deprecated Endpoints**: 84
 
 | Method | Deprecated Endpoint |
 |--------|---------------------|
@@ -55,7 +55,9 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | DELETE | `/public-api/resources/locations/v1.0/{location}` |
 | PUT | `/public-api/resources/parking-spaces/v1.0/{parkingSpace}` |
 | GET | `/public-api/resources/partner-expenses/v1.0` |
+| GET | `/public-api/resources/partner-expenses/v1.1` |
 | GET | `/public-api/resources/partner-revenues/v1.0` |
+| GET | `/public-api/resources/partner-revenues/v1.1` |
 | GET | `/public-api/resources/partners/v1.0` |
 | POST | `/public-api/resources/partners/v1.0` |
 | GET | `/public-api/resources/partners/v1.0/{partner}` |
@@ -75,6 +77,8 @@ Auto-generated from AMPECO Public API spec v3.139.0
 | GET | `/public-api/resources/roaming-platforms/v1.0/{roamingPlatform}` |
 | GET | `/public-api/resources/security-events-log/v2.0` |
 | GET | `/public-api/resources/security-events-log/v2.0/{securityEventLog}` |
+| GET | `/public-api/resources/sub-operators/v1.0` |
+| GET | `/public-api/resources/sub-operators/v1.0/{subOperator}` |
 | GET | `/public-api/resources/subscription-plans/v1.0` |
 | GET | `/public-api/resources/users/v1.0` |
 | POST | `/public-api/resources/users/v1.0` |
