@@ -1,8 +1,8 @@
 # Public API Endpoints Index
 
-Auto-generated from AMPECO Public API spec v3.168.0
+Auto-generated from AMPECO Public API spec v3.251.0
 
-**Total Endpoints**: 544
+**Total Endpoints**: 648
 
 ---
 
@@ -37,7 +37,7 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/start` | Charge Point / Start Charging Session Without EVSE | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/start/{evse}` | Charge Point / Start Charging Session | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/stop/{session}` | Charge Point / Stop Charging Session | No |
-| POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/sync-configuration` | Charge Point / Sync Configuration | No |
+| POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/sync-configuration` | Charge point / Sync configuration | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/trigger-message` | Charge Point / Trigger Message Charge Point | No |
 | POST | `/public-api/actions/charge-point/v1.0/{chargePoint}/unlock/{evse}` | Charge Point / EVSE / Unlock | No |
 | POST | `/public-api/actions/charge-point/v2.0/{chargePoint}/change-sharing-code` | Charge Point / Change sharing code | No |
@@ -57,6 +57,7 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | POST | `/public-api/actions/circuit/v2.0/{circuit}/set-charge-point-priority/{chargePoint}` | Circuit / Set Charge Point Priority | No |
 | POST | `/public-api/actions/circuit/v2.0/{circuit}/set-charge-point-priority/{chargePoint}/evse/{evse}` | Circuit / Set Charge Point EVSE Priority | No |
 | POST | `/public-api/actions/circuit/v2.0/{circuit}/set-circuit-soc-priorities` | Circuit / Set Circuit SoC Priority | No |
+| POST | `/public-api/actions/circuit/v2.0/{circuit}/set-session-boost/{session}` | Circuit / Set Session Boost | No |
 | POST | `/public-api/actions/circuit/v2.0/{circuit}/set-session-priority/{session}` | Circuit / Set Session Priority | No |
 
 ## action / configuration template
@@ -71,6 +72,19 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
 | POST | `/public-api/actions/electricity-meter/v1.0/{electricityMeter}/report-consumption` | Electricity Meter / Report Consumption | No |
+
+## action / energy coupon
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/energy-coupon/v1.0/redeem-code` | Energy coupon / Redeem code | No |
+| POST | `/public-api/actions/energy-coupon/v1.0/{energyCoupon}/cancel` | Energy coupon / Cancel | No |
+
+## action / energy coupon template
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/energy-coupon-template/v1.0/{energyCouponTemplate}/deactivate` | Energy coupon template / Deactivate | No |
 
 ## action / evse
 
@@ -118,17 +132,63 @@ Auto-generated from AMPECO Public API spec v3.168.0
 |--------|------|---------|------------|
 | POST | `/public-api/actions/parking-spaces/v1.0/{parkingSpace}/update-occupancy-status` | Parking Space / Update occupancy status | No |
 
+## action / partner
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/partner/v1.0/{partner}/set-custom-fields` | Partner / set custom fields | No |
+
+## action / partner invite corporate billing policy
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/partner-invite-corporate-billing-policy/v1.0/{corporateBillingPolicy}/disable` | Partner invite corporate billing policy / Disable | No |
+| POST | `/public-api/actions/partner-invite-corporate-billing-policy/v1.0/{corporateBillingPolicy}/enable` | Partner invite corporate billing policy / Enable | No |
+
+## action / partner invoice
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/partner-invoice/v1.0/{partnerInvoice}/issue-credit-note` | Partner invoice / Issue credit note | No |
+| POST | `/public-api/actions/partner-invoice/v1.0/{partnerInvoice}/update-external-id` | Partner invoice / Update external ID | No |
+
 ## action / partner settlement report
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
+| POST | `/public-api/actions/partner-settlement-report/v1.0/{partnerSettlementReport}/issue-partner-invoice` | Partner settlement report / Issue partner invoice | No |
+| POST | `/public-api/actions/partner-settlement-report/v1.0/{partnerSettlementReport}/set-custom-fields` | Partner settlement report / set custom fields | No |
 | POST | `/public-api/actions/partner-settlement-report/v1.0/{partnerSettlementReport}/update-external-id` | Partner Settlement Report / Update External ID | No |
+
+## action / payment terminal
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/payment-terminal/v1.0/{paymentTerminal}/set-custom-fields` | Payment terminal / set custom fields | No |
+
+## action / reimbursement record
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/reimbursement-record/v1.0/{reimbursementRecord}/issue-credit` | Reimbursement record / Issue credit | No |
+
+## action / reimbursement report
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/reimbursement-report/v1.0/{reimbursementReport}/regenerate` | Reimbursement report / Regenerate | No |
 
 ## action / reservation
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
 | POST | `/public-api/actions/reservation/v1.0/{reservation}/cancel` | Reservation / Cancel | No |
+
+## action / roaming emsp
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/actions/roaming-emsp/v1.0/{roamingEmsp}/assign-partner` | Roaming EMSP / Assign Partner | No |
 
 ## action / roaming operator
 
@@ -143,6 +203,7 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | POST | `/public-api/actions/session/v1.0/{session}/assign-user` | Session / Assign to user | No |
 | POST | `/public-api/actions/session/v1.0/{session}/change-tariff` | Session / Change tariff | No |
 | POST | `/public-api/actions/session/v1.0/{session}/retry-payment` | Session / Retry Payment | No |
+| POST | `/public-api/actions/session/v1.0/{session}/set-custom-fields` | Session / set custom fields | No |
 
 ## action / subscription-plan
 
@@ -166,6 +227,7 @@ Auto-generated from AMPECO Public API spec v3.168.0
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
+| POST | `/public-api/actions/transaction/v1.0/{transaction}/create-pre-authorization` | Transaction / Create Pre-Authorization | No |
 | POST | `/public-api/actions/transactions/v1.0/{transaction}/issue-invoice` | Transaction / Issue Invoice | No |
 | POST | `/public-api/actions/transactions/v1.0/{transaction}/resend-invoice` | Transaction / Resend Invoice | No |
 | POST | `/public-api/actions/transactions/v1.0/{transaction}/update-payment-reference` | Transaction / Update Payment Reference | No |
@@ -174,12 +236,15 @@ Auto-generated from AMPECO Public API spec v3.168.0
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
+| POST | `/public-api/actions/user/v1.0/{user}/revoke-marketing-consent` | User / Revoke marketing consent | No |
 | POST | `/public-api/actions/users/v1.0/{user}/activate-subscription` | User / Activate subscription | No |
 | POST | `/public-api/actions/users/v1.0/{user}/add-balance` | User / Add Balance | No |
 | POST | `/public-api/actions/users/v1.0/{user}/apply-custom-fee` | User / Apply Custom Fee | No |
 | POST | `/public-api/actions/users/v1.0/{user}/cancel-subscription` | User / Cancel subscription | No |
 | POST | `/public-api/actions/users/v1.0/{user}/change-status` | User / Change Status | No |
 | POST | `/public-api/actions/users/v1.0/{user}/clear-subscription-amount-due` | User / Clear subscription amount due | No |
+| GET | `/public-api/actions/users/v1.0/{user}/get-total-eligible-coupon-energy` | User / Get total eligible coupon energy | No |
+| POST | `/public-api/actions/users/v1.0/{user}/subscribe-to-plan` | User / Subscribe to plan | No |
 | POST | `/public-api/actions/users/v1.0/{user}/subscription-billing-period/{billingPeriod}/retry-payment` | Subscription billing period / Retry payment | No |
 | GET | `/public-api/actions/users/v2.0/{user}/export-all-private-data` | User / Export All Private Data | No |
 | POST | `/public-api/actions/users/v2.0/{user}/redeem-voucher` | User / Redeem Voucher | No |
@@ -212,6 +277,13 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | GET | `/public-api/notifications/v2.0/{notification}` | Notification / Read | No |
 | PUT | `/public-api/notifications/v2.0/{notification}` | Notifications / Update | No |
 | DELETE | `/public-api/notifications/v2.0/{notification}` | Notifications / Unsubscribe | No |
+
+## oauth
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| POST | `/public-api/oauth/revoke` | OAuth token revocation | No |
+| POST | `/public-api/oauth/token` | OAuth / Token Exchange | No |
 
 ## resource / admins
 
@@ -339,10 +411,11 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | POST | `/public-api/resources/charge-points/v2.0/{chargePoint}/personal-smart-charging-preferences` | Charge Point / Personal smart charging preferences / Update | No |
 | GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/shared-partners` | Charge Point / Shared Partners / Listing | No |
 | PUT | `/public-api/resources/charge-points/v2.0/{chargePoint}/shared-partners` | Charge Point / Shared Partners / Update | No |
-| POST | `/public-api/resources/charge-points/v2.0/{chargePoint}/shares` | Charge Point / Share / Create | No |
-| GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/shares` | Charge Point / Shares / Listing | No |
-| GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/shares/{share}` | Charge Point / Share / Read | No |
-| DELETE | `/public-api/resources/charge-points/v2.0/{chargePoint}/shares/{share}` | Charge Point / Share / Delete | No |
+| POST | `/public-api/resources/charge-points/v2.0/{chargePoint}/shares` | Charge point / share / create | No |
+| GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/shares` | Charge point / shares / listing | No |
+| GET | `/public-api/resources/charge-points/v2.0/{chargePoint}/shares/{share}` | Charge point / share / read | No |
+| PATCH | `/public-api/resources/charge-points/v2.0/{chargePoint}/shares/{share}` | Charge point / share / update | No |
+| DELETE | `/public-api/resources/charge-points/v2.0/{chargePoint}/shares/{share}` | Charge point / share / delete | No |
 | POST | `/public-api/resources/charge-points/v2.0/{chargePoint}/smart-charging` | Charge Point / Smart Charging / Update | No |
 
 ## resource / circuits
@@ -482,6 +555,24 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | PUT | `/public-api/resources/electricity-rates/v2.0/{electricityRate}/price-periods/week-day/{weekDay}` | Electricity rate / Price periods / Week day / Create or update | No |
 | DELETE | `/public-api/resources/electricity-rates/v2.0/{electricityRate}/price-periods/week-day/{weekDay}` | Electricity rate / Price periods / Week day / Delete | No |
 
+## resource / energy coupon templates
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/energy-coupon-templates/v1.0` | Energy coupon templates / Listing | No |
+| POST | `/public-api/resources/energy-coupon-templates/v1.0` | Energy coupon templates / Create | No |
+| GET | `/public-api/resources/energy-coupon-templates/v1.0/{energyCouponTemplate}` | Energy coupon template / Read | No |
+| PATCH | `/public-api/resources/energy-coupon-templates/v1.0/{energyCouponTemplate}` | Energy coupon template / Update | No |
+
+## resource / energy coupons
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/energy-coupons/v1.0` | Energy coupons / Listing | No |
+| POST | `/public-api/resources/energy-coupons/v1.0` | Energy coupon / Create | No |
+| GET | `/public-api/resources/energy-coupons/v1.0/{energyCoupon}` | Energy coupon / Read | No |
+| GET | `/public-api/resources/energy-coupons/v1.0/{energyCoupon}/energy-coupon-session-consumptions` | Energy coupon / Session consumption records | No |
+
 ## resource / evse downtime periods
 
 | Method | Path | Summary | Deprecated |
@@ -559,6 +650,11 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | GET | `/public-api/resources/id-tags/v2.0/{idTag}` | Id Tag / Read | No |
 | PATCH | `/public-api/resources/id-tags/v2.0/{idTag}` | Id Tag / Update | No |
 | DELETE | `/public-api/resources/id-tags/v2.0/{idTag}` | Id Tag / Delete | No |
+| GET | `/public-api/resources/id-tags/v2.0/{idTag}/notes` | ID tag / Notes / Listing | No |
+| POST | `/public-api/resources/id-tags/v2.0/{idTag}/notes` | ID tag / Note / Create | No |
+| GET | `/public-api/resources/id-tags/v2.0/{idTag}/notes/{note}` | ID tag / Note / Read | No |
+| PATCH | `/public-api/resources/id-tags/v2.0/{idTag}/notes/{note}` | ID tag / Note / Update | No |
+| DELETE | `/public-api/resources/id-tags/v2.0/{idTag}/notes/{note}` | ID tag / Note / Delete | No |
 
 ## resource / installation and maintenance companies
 
@@ -586,6 +682,8 @@ Auto-generated from AMPECO Public API spec v3.168.0
 |--------|------|---------|------------|
 | GET | `/public-api/resources/invoices/v1.0` | Invoices / Listing | No |
 | GET | `/public-api/resources/invoices/v1.0/{invoice}` | Invoice / Read | No |
+| GET | `/public-api/resources/invoices/v1.0/{invoice}/fiscalization-attempts` | Invoice fiscalization attempts / Listing | No |
+| GET | `/public-api/resources/invoices/v1.0/{invoice}/fiscalization-documents/download` | Invoice fiscalization document / Download | No |
 
 ## resource / issues
 
@@ -652,16 +750,59 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | PUT | `/public-api/resources/partner-contracts/v1.0/{partnerContract}` | Partner Contract / Update | No |
 | PATCH | `/public-api/resources/partner-contracts/v1.0/{partnerContract}` | Partner Contract / Patch | No |
 | DELETE | `/public-api/resources/partner-contracts/v1.0/{partnerContract}` | Partner Contract / Delete | No |
+| GET | `/public-api/resources/partner-contracts/v1.0/{partnerContract}/settlement-overrides` | Partner contract / Settlement overrides / Listing | No |
+| POST | `/public-api/resources/partner-contracts/v1.0/{partnerContract}/settlement-overrides` | Partner contract / Settlement override / Create | No |
+| GET | `/public-api/resources/partner-contracts/v1.0/{partnerContract}/settlement-overrides/{settlementOverride}` | Partner contract / Settlement override / Read | No |
+| PATCH | `/public-api/resources/partner-contracts/v1.0/{partnerContract}/settlement-overrides/{settlementOverride}` | Partner contract / Settlement override / Update | No |
+| DELETE | `/public-api/resources/partner-contracts/v1.0/{partnerContract}/settlement-overrides/{settlementOverride}` | Partner contract / Settlement override / Delete | No |
+
+## resource / partner invite access policies
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/partner-invite-access-policies/v1.0` | Partner invite access policies / listing | No |
+| POST | `/public-api/resources/partner-invite-access-policies/v1.0` | Partner invite access policy / create | No |
+| GET | `/public-api/resources/partner-invite-access-policies/v1.0/{partnerInviteAccessPolicy}` | Partner invite access policy / read | No |
+| PATCH | `/public-api/resources/partner-invite-access-policies/v1.0/{partnerInviteAccessPolicy}` | Partner invite access policy / update | No |
+| DELETE | `/public-api/resources/partner-invite-access-policies/v1.0/{partnerInviteAccessPolicy}` | Partner invite access policy / delete | No |
+
+## resource / partner invite corporate billing policies
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/partner-invite-corporate-billing-policies/v1.0` | Partner invite corporate billing policies / Listing | No |
+| POST | `/public-api/resources/partner-invite-corporate-billing-policies/v1.0` | Partner invite corporate billing policy / Create | No |
+| GET | `/public-api/resources/partner-invite-corporate-billing-policies/v1.0/{corporateBillingPolicy}` | Partner invite corporate billing policy / Read | No |
+| PATCH | `/public-api/resources/partner-invite-corporate-billing-policies/v1.0/{corporateBillingPolicy}` | Partner invite corporate billing policy / Update | No |
+| DELETE | `/public-api/resources/partner-invite-corporate-billing-policies/v1.0/{corporateBillingPolicy}` | Partner invite corporate billing policy / Delete | No |
+
+## resource / partner invite corporate billing policy snapshots
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/partner-invite-corporate-billing-policy-snapshots/v1.0/{corporateBillingPolicySnapshot}` | Partner invite corporate billing policy snapshot / Read | No |
 
 ## resource / partner invites
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
-| GET | `/public-api/resources/partner-invites/v1.0` | Partner Invites / Listing | No |
-| POST | `/public-api/resources/partner-invites/v1.0` | Partner Invite / Create | No |
-| GET | `/public-api/resources/partner-invites/v1.0/{partnerInvite}` | Partner Invite / Read | No |
-| PATCH | `/public-api/resources/partner-invites/v1.0/{partnerInvite}` | Partner Invite / Update | No |
-| DELETE | `/public-api/resources/partner-invites/v1.0/{partnerInvite}` | Partner Invite / Delete | No |
+| GET | `/public-api/resources/partner-invites/v1.0` | Partner Invites / Listing | Yes |
+| POST | `/public-api/resources/partner-invites/v1.0` | Partner Invite / Create | Yes |
+| GET | `/public-api/resources/partner-invites/v1.0/{partnerInvite}` | Partner Invite / Read | Yes |
+| PATCH | `/public-api/resources/partner-invites/v1.0/{partnerInvite}` | Partner Invite / Update | Yes |
+| DELETE | `/public-api/resources/partner-invites/v1.0/{partnerInvite}` | Partner Invite / Delete | Yes |
+| GET | `/public-api/resources/partner-invites/v2.0` | Partner invites / Listing | No |
+| POST | `/public-api/resources/partner-invites/v2.0` | Partner invite / Create | No |
+| GET | `/public-api/resources/partner-invites/v2.0/{partnerInvite}` | Partner invite / Read | No |
+| PATCH | `/public-api/resources/partner-invites/v2.0/{partnerInvite}` | Partner invite / Update | No |
+| DELETE | `/public-api/resources/partner-invites/v2.0/{partnerInvite}` | Partner invite / Delete | No |
+
+## resource / partner invoices
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/partner-invoices/v1.0` | Partner Invoices / Listing | No |
+| GET | `/public-api/resources/partner-invoices/v1.0/{partnerInvoice}` | Partner Invoice / Read | No |
 
 ## resource / partner settlement reports
 
@@ -731,6 +872,30 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | GET | `/public-api/resources/receipts/v2.0` | Receipts / Listing | No |
 | GET | `/public-api/resources/receipts/v2.0/{receipt}` | Receipt / Read | No |
 
+## resource / reimbursement policies
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/reimbursement-policies/v1.0` | Reimbursement policies / Listing | No |
+| POST | `/public-api/resources/reimbursement-policies/v1.0` | Reimbursement policy / Create | No |
+| GET | `/public-api/resources/reimbursement-policies/v1.0/{reimbursementPolicy}` | Reimbursement policy / Read | No |
+| PATCH | `/public-api/resources/reimbursement-policies/v1.0/{reimbursementPolicy}` | Reimbursement policy / Update | No |
+| DELETE | `/public-api/resources/reimbursement-policies/v1.0/{reimbursementPolicy}` | Reimbursement policy / Delete | No |
+
+## resource / reimbursement records
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/reimbursement-records/v1.0` | Reimbursement records / Listing | No |
+| GET | `/public-api/resources/reimbursement-records/v1.0/{reimbursementRecord}` | Reimbursement record / Read | No |
+
+## resource / reimbursement reports
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/reimbursement-reports/v1.0` | Reimbursement reports / Listing | No |
+| GET | `/public-api/resources/reimbursement-reports/v1.0/{reimbursementReport}` | Reimbursement report / Read | No |
+
 ## resource / reservations
 
 | Method | Path | Summary | Deprecated |
@@ -766,13 +931,32 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | GET | `/public-api/resources/roaming-connections/v2.0` | Roaming Connections / Listing | No |
 | GET | `/public-api/resources/roaming-connections/v2.0/{roamingConnection}` | Roaming Connections / Read | No |
 
+## resource / roaming cpos
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/roaming-cpos/v1.0` | Roaming CPOs / Listing | No |
+| GET | `/public-api/resources/roaming-cpos/v1.0/{roamingCpo}` | Roaming CPO / Read | No |
+| PATCH | `/public-api/resources/roaming-cpos/v1.0/{roamingCpo}` | Roaming CPO / Update | No |
+
+## resource / roaming emsps
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/roaming-emsps/v1.0` | Roaming EMSPs / Listing | No |
+| POST | `/public-api/resources/roaming-emsps/v1.0` | Roaming EMSP / Create | No |
+| GET | `/public-api/resources/roaming-emsps/v1.0/{roamingEmsp}` | Roaming EMSP / Read | No |
+| PATCH | `/public-api/resources/roaming-emsps/v1.0/{roamingEmsp}` | Roaming EMSP / Update | No |
+| DELETE | `/public-api/resources/roaming-emsps/v1.0/{roamingEmsp}` | Roaming EMSP / Delete | No |
+| GET | `/public-api/resources/roaming-emsps/v1.0/{roamingEmsp}/partners` | Roaming EMSP Partners / Listing | No |
+
 ## resource / roaming operators
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
-| GET | `/public-api/resources/roaming-operators/v2.0` | Roaming Operators / Listing | No |
-| GET | `/public-api/resources/roaming-operators/v2.0/{roamingOperator}` | Roaming Operator / Read | No |
-| PATCH | `/public-api/resources/roaming-operators/v2.0/{roamingOperator}` | Roaming Operator / Update | No |
+| GET | `/public-api/resources/roaming-operators/v2.0` | Roaming Operators / Listing | Yes |
+| GET | `/public-api/resources/roaming-operators/v2.0/{roamingOperator}` | Roaming Operator / Read | Yes |
+| PATCH | `/public-api/resources/roaming-operators/v2.0/{roamingOperator}` | Roaming Operator / Update | Yes |
 | GET | `/public-api/resources/roaming-operators/v2.0/{roamingOperator}/custom-tariff-filters` | Roaming Operators / Custom Tariff Filters / Listing | No |
 | POST | `/public-api/resources/roaming-operators/v2.0/{roamingOperator}/custom-tariff-filters` | Roaming Operators / Custom Tariff Filters / Create | No |
 | PUT | `/public-api/resources/roaming-operators/v2.0/{roamingOperator}/custom-tariff-filters/reorder` | Roaming Operators / Custom Tariff Filters / Reorder | No |
@@ -791,11 +975,11 @@ Auto-generated from AMPECO Public API spec v3.168.0
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
-| GET | `/public-api/resources/roaming-providers/v2.0` | Roaming Providers / Listing | No |
-| POST | `/public-api/resources/roaming-providers/v2.0` | Roaming Provider / Create | No |
-| GET | `/public-api/resources/roaming-providers/v2.0/{roamingProvider}` | Roaming Provider / Read | No |
-| PATCH | `/public-api/resources/roaming-providers/v2.0/{roamingProvider}` | Roaming Provider / Update | No |
-| DELETE | `/public-api/resources/roaming-providers/v2.0/{roamingProvider}` | Roaming Provider / Delete | No |
+| GET | `/public-api/resources/roaming-providers/v2.0` | Roaming Providers / Listing | Yes |
+| POST | `/public-api/resources/roaming-providers/v2.0` | Roaming Provider / Create | Yes |
+| GET | `/public-api/resources/roaming-providers/v2.0/{roamingProvider}` | Roaming Provider / Read | Yes |
+| PATCH | `/public-api/resources/roaming-providers/v2.0/{roamingProvider}` | Roaming Provider / Update | Yes |
+| DELETE | `/public-api/resources/roaming-providers/v2.0/{roamingProvider}` | Roaming Provider / Delete | Yes |
 
 ## resource / roaming tariffs
 
@@ -826,12 +1010,21 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | GET | `/public-api/resources/sessions/v1.0` | Sessions / Listing | No |
 | GET | `/public-api/resources/sessions/v1.0/{session}` | Session / Read | No |
 | GET | `/public-api/resources/sessions/v1.0/{session}/consumption-stats` | Sessions / Consumption Stats / Read | No |
+| GET | `/public-api/resources/sessions/v1.0/{session}/energy-coupon-session-consumptions` | Session / Energy coupon session consumptions | No |
+| GET | `/public-api/resources/sessions/v1.0/{session}/timeline-snapshot` | Sessions / Timeline Snapshot / Read | No |
 
 ## resource / settings
 
 | Method | Path | Summary | Deprecated |
 |--------|------|---------|------------|
 | GET | `/public-api/resources/settings/v1.0` | Settings / Listing | No |
+
+## resource / sharing invites
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/sharing-invites/v1.0` | Sharing invites / Listing | No |
+| GET | `/public-api/resources/sharing-invites/v1.0/{sharingInvite}` | Sharing invite / Read | No |
 
 ## resource / sub operators
 
@@ -882,7 +1075,13 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | POST | `/public-api/resources/tariffs/v1.0` | Tariff / Create | No |
 | GET | `/public-api/resources/tariffs/v1.0/{tariff}` | Tariff / Read | No |
 | PUT | `/public-api/resources/tariffs/v1.0/{tariff}` | Tariff / Update | No |
+| PATCH | `/public-api/resources/tariffs/v1.0/{tariff}` | Tariff / Partial Update | No |
 | DELETE | `/public-api/resources/tariffs/v1.0/{tariff}` | Tariff / Delete | No |
+| GET | `/public-api/resources/tariffs/v1.0/{tariff}/scheduled-changes` | Tariff / Scheduled Changes / Listing | No |
+| POST | `/public-api/resources/tariffs/v1.0/{tariff}/scheduled-changes` | Tariff / Scheduled Change / Create | No |
+| DELETE | `/public-api/resources/tariffs/v1.0/{tariff}/scheduled-changes/{scheduledChange}` | Tariff / Scheduled Change / Delete | No |
+| GET | `/public-api/resources/tariffs/v1.0/{tariff}/scheduled-changes/{scheduledChange}` | Tariff / Scheduled Change / Read | No |
+| PATCH | `/public-api/resources/tariffs/v1.0/{tariff}/scheduled-changes/{scheduledChange}` | Tariff / Scheduled Change / Update | No |
 
 ## resource / tax identification numbers
 
@@ -936,6 +1135,13 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | GET | `/public-api/resources/transactions/v1.0/{transaction}` | Transaction / Read | No |
 | PATCH | `/public-api/resources/transactions/v1.0/{transaction}` | Transaction / Update | No |
 
+## resource / user-devices
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/user-devices/v1.0` | User devices / Listing | No |
+| GET | `/public-api/resources/user-devices/v1.0/{userDevice}` | User device / Read | No |
+
 ## resource / user-groups
 
 | Method | Path | Summary | Deprecated |
@@ -984,6 +1190,24 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | GET | `/public-api/resources/utilities/v1.0/{utility}` | Utilities / Read | No |
 | PUT | `/public-api/resources/utilities/v1.0/{utility}` | Utilities / Update | No |
 | DELETE | `/public-api/resources/utilities/v1.0/{utility}` | Utilities / Delete | No |
+
+## resource / vehicles
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/vehicles/v1.0` | Vehicles / Listing | No |
+| POST | `/public-api/resources/vehicles/v1.0` | Vehicle / Create | No |
+| GET | `/public-api/resources/vehicles/v1.0/telemetry-readings` | Vehicle telemetry readings / listing | No |
+| GET | `/public-api/resources/vehicles/v1.0/{vehicle}` | Vehicle / Read | No |
+| PATCH | `/public-api/resources/vehicles/v1.0/{vehicle}` | Vehicle / Update | No |
+| DELETE | `/public-api/resources/vehicles/v1.0/{vehicle}` | Vehicle / Delete | No |
+| GET | `/public-api/resources/vehicles/v1.0/{vehicle}/relations/users` | Vehicle / Users / Listing | No |
+| PUT | `/public-api/resources/vehicles/v1.0/{vehicle}/relations/users` | Vehicle / Users / Replace | No |
+| POST | `/public-api/resources/vehicles/v1.0/{vehicle}/relations/users` | Vehicle / Users / Attach | No |
+| DELETE | `/public-api/resources/vehicles/v1.0/{vehicle}/relations/users/{user}` | Vehicle / Users / Detach | No |
+| GET | `/public-api/resources/vehicles/v1.0/{vehicle}/telemetry-readings` | Vehicle telemetry readings / Listing | No |
+| POST | `/public-api/resources/vehicles/v1.0/{vehicle}/telemetry-readings` | Vehicle telemetry reading / Create | No |
+| DELETE | `/public-api/resources/vehicles/v1.0/{vehicle}/telemetry-readings/{vehicleTelemetryReading}` | Vehicle telemetry reading / Delete | No |
 
 ## resource / vendor error codes
 

@@ -17,9 +17,9 @@ ampeco-public-api/
 ├── scripts/
 │   └── fetch-and-generate.sh     # Updates reference docs from OpenAPI spec
 └── reference/
-    ├── endpoints-index.md        # All 514+ API endpoints by resource
+    ├── endpoints-index.md        # All 648 API endpoints by resource
     ├── schemas-index.md          # Schema definitions with properties
-    ├── deprecation-map.md        # Deprecated endpoints (80+)
+    ├── deprecation-map.md        # Deprecated endpoints (97)
     ├── common-patterns.md        # Auth, pagination, filtering, errors
     └── data-model.md             # Entity relationships and use cases
 ```
@@ -66,10 +66,15 @@ The `<!-- BEGIN:QUICK_INDEX -->` / `<!-- END:QUICK_INDEX -->` markers in SKILL.m
 When helping users with AMPECO API integration:
 
 - **Base URL**: `https://{tenantUrl}/public-api/`
-- **Auth**: Bearer token via `Authorization: Bearer {token}`
+- **Auth**: `Authorization: Bearer {token}` — either a long-lived admin token, or an access token
+  exchanged from `client_id`/`client_secret` at `/public-api/oauth/token`. The `client_secret`
+  itself is not a bearer token.
 - **Path patterns**:
   - Resources: `/public-api/resources/{resource-name}/v{X.Y}/`
-  - Actions: `/public-api/actions/{target}/v{X.Y}/{id}/{action}`
+  - Actions: `/public-api/actions/{target}/v{X.Y}/{id}/{action}` — target is singular
+  - Logs: `/public-api/logs/{communication|ocpi}/v{X.Y}/`
+  - OAuth: `/public-api/oauth/{token|revoke}` (unversioned)
 - **Response format**: JSON with `data` wrapper, pagination via `links`/`meta`
-- **Filtering**: `filter[fieldName]=value` (camelCase fields)
-- **Includes**: `include[]=relationName` for related resources
+- **Pagination**: cursor-based; `page` is deprecated with a sunset of 01 Jun 2026
+- **Filtering**: `filter[fieldName]=value` (camelCase fields), per-resource `{Resource}Filter` schema
+- **Includes**: `include[]=relationName` for related resources, enumerated per resource
