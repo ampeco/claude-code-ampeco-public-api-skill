@@ -1,6 +1,6 @@
 # Deprecation Map
 
-Auto-generated from AMPECO Public API spec v3.251.0
+Auto-generated from AMPECO Public API spec v3.251.8
 
 **Total Deprecated Endpoints**: 97
 

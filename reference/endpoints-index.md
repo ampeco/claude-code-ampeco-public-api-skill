@@ -1,8 +1,8 @@
 # Public API Endpoints Index
 
-Auto-generated from AMPECO Public API spec v3.251.0
+Auto-generated from AMPECO Public API spec v3.251.8
 
-**Total Endpoints**: 648
+**Total Endpoints**: 651
 
 ---
 
@@ -720,6 +720,13 @@ Auto-generated from AMPECO Public API spec v3.251.0
 | PATCH | `/public-api/resources/locations/v2.0/{location}/notes/{note}` | Location / Note / Update | No |
 | DELETE | `/public-api/resources/locations/v2.0/{location}/notes/{note}` | Location / Note / Delete | No |
 
+## resource / ocpi commands
+
+| Method | Path | Summary | Deprecated |
+|--------|------|---------|------------|
+| GET | `/public-api/resources/ocpi-commands/v1.0` | OCPI commands / Listing | No |
+| GET | `/public-api/resources/ocpi-commands/v1.0/{ocpiCommand}` | OCPI command / Read | No |
+
 ## resource / operators
 
 | Method | Path | Summary | Deprecated |
@@ -1150,6 +1157,7 @@ Auto-generated from AMPECO Public API spec v3.251.0
 | POST | `/public-api/resources/user-groups/v1.0` | User Group / Create | No |
 | GET | `/public-api/resources/user-groups/v1.0/{userGroup}` | User Group / Read | No |
 | PATCH | `/public-api/resources/user-groups/v1.0/{userGroup}` | User Group / Update | No |
+| PUT | `/public-api/resources/user-groups/v1.0/{userGroup}` | User Group / Replace | No |
 | DELETE | `/public-api/resources/user-groups/v1.0/{userGroup}` | User Group / Delete | No |
 
 ## resource / users

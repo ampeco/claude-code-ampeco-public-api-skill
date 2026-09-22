@@ -17,7 +17,7 @@ ampeco-public-api/
 ├── scripts/
 │   └── fetch-and-generate.sh     # Updates reference docs from OpenAPI spec
 └── reference/
-    ├── endpoints-index.md        # All 648 API endpoints by resource
+    ├── endpoints-index.md        # All 651 API endpoints by resource
     ├── schemas-index.md          # Schema definitions with properties
     ├── deprecation-map.md        # Deprecated endpoints (97)
     ├── common-patterns.md        # Auth, pagination, filtering, errors
@@ -32,6 +32,13 @@ Fetch latest OpenAPI spec and regenerate all reference files:
 
 ```bash
 bash scripts/fetch-and-generate.sh
+```
+
+To generate from a local bundle instead of the published spec — an unreleased
+backend branch, for example — set `SPEC_FILE` to a bundled OpenAPI JSON file:
+
+```bash
+SPEC_FILE=/path/to/backend/main/docs/out/public.json bash scripts/fetch-and-generate.sh
 ```
 
 **Prerequisites**: `curl` and `jq` must be installed

@@ -5,7 +5,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_DIR="$(dirname "$SCRIPT_DIR")"
 REFERENCE_DIR="$SKILL_DIR/reference"
 
-SPEC_URL="https://developers.ampeco.com/openapi/public-api.yaml"
+SPEC_URL="${SPEC_URL:-https://developers.ampeco.com/openapi/public-api.yaml}"
+SPEC_FILE="${SPEC_FILE:-}"
 
 echo "=== AMPECO Public API Documentation Generator ==="
 echo ""
@@ -14,10 +15,17 @@ echo ""
 command -v curl >/dev/null 2>&1 || { echo "Error: curl is required"; exit 1; }
 command -v jq >/dev/null 2>&1 || { echo "Error: jq is required. Install with: brew install jq"; exit 1; }
 
-echo "Fetching AMPECO Public API spec from $SPEC_URL..."
-
-# Fetch OpenAPI spec (served as JSON despite .yaml extension)
-SPEC_JSON=$(curl -s "$SPEC_URL")
+# SPEC_FILE generates from a local bundle (e.g. an unreleased backend branch)
+# instead of the published spec. Leave it unset for the published contract.
+if [ -n "$SPEC_FILE" ]; then
+    echo "Reading AMPECO Public API spec from $SPEC_FILE..."
+    [ -f "$SPEC_FILE" ] || { echo "Error: $SPEC_FILE not found"; exit 1; }
+    SPEC_JSON=$(cat "$SPEC_FILE")
+else
+    echo "Fetching AMPECO Public API spec from $SPEC_URL..."
+    # Fetch OpenAPI spec (served as JSON despite .yaml extension)
+    SPEC_JSON=$(curl -s "$SPEC_URL")
+fi
 
 # Extract and verify API version
 API_VERSION=$(echo "$SPEC_JSON" | jq -r '.info.version')
