@@ -79,11 +79,12 @@ The `client_secret` is **not** a valid bearer token on its own — it must be ex
 
 **Path Patterns**:
 - Resources: `/public-api/resources/{resource-name}/v{X.Y}/`
-- Actions: `/public-api/actions/{target}/v{X.Y}/{id}/{action}` — the target segment does **not**
-  match the resource segment. Most are singular (`actions/charge-point/...` for
-  `resources/charge-points/...`), but seven are plural: `users`, `locations`, `notifications`,
-  `tariffs`, `transactions`, `parking-spaces`, `subscription-plans`. Take the path from
-  `reference/endpoints-index.md` rather than deriving it.
+- Actions: `/public-api/actions/{target}/v{X.Y}/{id}/{action}` — the target segment is **not**
+  derivable from the resource segment. Most are singular (`actions/charge-point/...` for
+  `resources/charge-points/...`); five are plural-only (`locations`, `notifications`,
+  `parking-spaces`, `subscription-plans`, `tariffs`); and `user`/`users` and
+  `transaction`/`transactions` **both** exist, carrying different actions. Always copy the
+  exact path from `reference/endpoints-index.md`.
 - Notifications: `/public-api/notifications/v{X.Y}/`
 - Logs: `/public-api/logs/{communication|ocpi}/v{X.Y}/`
 - OAuth: `/public-api/oauth/{token|revoke}` (unversioned)
