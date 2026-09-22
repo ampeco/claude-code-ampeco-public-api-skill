@@ -49,15 +49,17 @@ GET /public-api/resources/{resource}/v1.0?per_page=25
     "next": "https://{tenantUrl}/public-api/resources/users/v1.0?cursor=eyJ...&per_page=25"
   },
   "meta": {
-    "cursor": "eyJ...",
-    "per_page": 25
+    "path": "https://{tenantUrl}/public-api/resources/users/v1.0",
+    "per_page": 25,
+    "next_cursor": "eyJ...",
+    "prev_cursor": null
   }
 }
 ```
 
 **Next Page Request**:
 ```
-GET /public-api/resources/{resource}/v1.0?cursor={cursor_from_meta}&per_page=25
+GET /public-api/resources/{resource}/v1.0?cursor={cursor_from_links.next}&per_page=25
 ```
 
 ### Page Pagination (Deprecated — sunset Mon, 01 Jun 2026)
@@ -94,9 +96,10 @@ GET /public-api/resources/{resource}/v1.0?page=1&per_page=25
 
 **Parameters**:
 - `cursor` (string): Opaque cursor. Pass empty (`?cursor`) for the first page, then take the value
-  from `links.next`. Never construct it by hand.
+  from `links.next` (also exposed as `meta.next_cursor`). Never construct it by hand.
 - `page` (integer, default: 1): **Deprecated**, sunset Mon, 01 Jun 2026. Not used in cursor pagination.
-- `per_page` (integer, default: 100, max: 100): Page size for both pagination styles.
+- `per_page` (integer, default: 100, max: 100 on resource endpoints; default 500, max 500 on
+  `/public-api/logs/*`): Page size for both pagination styles.
 
 ---
 
