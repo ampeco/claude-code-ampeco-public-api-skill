@@ -245,7 +245,7 @@ GET /public-api/resources/sessions/v1.0?filter[startedAfter]=2024-01-01T00:00:00
 
 Embed related resources with `include[]=relationName`:
 ```
-GET /public-api/resources/charge-points/v2.0?include[]=connectors&include[]=lastBootNotification
+GET /public-api/resources/charge-points/v2.0?include[]=lastBootNotification&include[]=chargingProfile
 ```
 Valid values differ per resource — check the endpoint's `include` parameter in
 `reference/endpoints-index.md` rather than reusing another resource's.

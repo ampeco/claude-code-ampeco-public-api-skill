@@ -111,7 +111,7 @@ Use `filter[fieldName]=value` format (camelCase field names):
 
 ```
 GET /public-api/resources/sessions/v1.0?filter[userId]=123
-GET /public-api/resources/charge-points/v2.0?filter[status]=active
+GET /public-api/resources/charge-points/v2.0?filter[networkStatus]=available
 GET /public-api/resources/partners/v2.0?filter[operatorId]=456
 ```
 
@@ -137,8 +137,8 @@ schema are valid filters for it. Look the resource's `filter` parameter up in
 Use `include[]` parameter to embed related resources:
 
 ```
-GET /public-api/resources/charge-points/v2.0?include[]=connectors
-GET /public-api/resources/charge-points/v2.0?include[]=connectors&include[]=lastBootNotification
+GET /public-api/resources/charge-points/v2.0?include[]=lastBootNotification
+GET /public-api/resources/charge-points/v2.0?include[]=lastBootNotification&include[]=chargingProfile
 ```
 
 **Rules**:
