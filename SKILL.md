@@ -73,14 +73,17 @@ The `client_secret` is **not** a valid bearer token on its own — it must be ex
 {
   "data": [...],
   "links": { "first": "...", "last": null, "prev": null, "next": "...?cursor=eyJ..." },
-  "meta": { "cursor": "eyJ...", "per_page": 100 }
+  "meta": { "path": "...", "per_page": 100, "next_cursor": "eyJ...", "prev_cursor": null }
 }
 ```
 
 **Path Patterns**:
 - Resources: `/public-api/resources/{resource-name}/v{X.Y}/`
-- Actions: `/public-api/actions/{target}/v{X.Y}/{id}/{action}` — the target is **singular**
-  (`actions/charge-point/...`, not `charge-points`)
+- Actions: `/public-api/actions/{target}/v{X.Y}/{id}/{action}` — the target segment does **not**
+  match the resource segment. Most are singular (`actions/charge-point/...` for
+  `resources/charge-points/...`), but seven are plural: `users`, `locations`, `notifications`,
+  `tariffs`, `transactions`, `parking-spaces`, `subscription-plans`. Take the path from
+  `reference/endpoints-index.md` rather than deriving it.
 - Notifications: `/public-api/notifications/v{X.Y}/`
 - Logs: `/public-api/logs/{communication|ocpi}/v{X.Y}/`
 - OAuth: `/public-api/oauth/{token|revoke}` (unversioned)
@@ -221,8 +224,9 @@ See `reference/data-model.md` for detailed relationships and recipes.
 GET /public-api/resources/users/v1.0?cursor&per_page=25
 GET /public-api/resources/users/v1.0?cursor={cursor_from_links.next}&per_page=25
 ```
-Pass an empty `?cursor` to start, then take the value from `links.next` — never build one by hand.
-`per_page` defaults to 100 and is capped at 100.
+Pass an empty `?cursor` to start, then take the value from `links.next` (also exposed as
+`meta.next_cursor`) — never build one by hand. `per_page` defaults to 100 and caps at 100 on
+resource endpoints; the `/public-api/logs/*` endpoints default to 500 and cap at 500.
 
 **`page` is deprecated with a sunset date of Mon, 01 Jun 2026.** Do not write new integrations
 against `?page=N`.
