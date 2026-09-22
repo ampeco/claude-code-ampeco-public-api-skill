@@ -6,7 +6,7 @@ A standalone Claude Code skill that helps developers integrate with the [AMPECO 
 
 ## Features
 
-- **API Exploration**: Browse 449+ API endpoints organized by resource type
+- **API Exploration**: Browse 648 API endpoints organized by resource type
 - **Schema Reference**: View request/response schemas with properties and types
 - **Deprecation Tracking**: Identify deprecated endpoints and their replacements
 - **Common Patterns**: Learn authentication, pagination, filtering, and error handling
@@ -91,7 +91,7 @@ ampeco-public-api/
 ├── scripts/
 │   └── fetch-and-generate.sh     # Updates reference docs from OpenAPI spec
 └── reference/
-    ├── endpoints-index.md        # All 449+ API endpoints by resource
+    ├── endpoints-index.md        # All 648 API endpoints by resource
     ├── schemas-index.md          # Schema definitions with properties
     ├── deprecation-map.md        # Deprecated endpoints (67+)
     ├── common-patterns.md        # Auth, pagination, filtering, errors

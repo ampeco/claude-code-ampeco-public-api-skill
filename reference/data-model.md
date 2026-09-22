@@ -39,8 +39,8 @@ Operator (tenant scope)
 | Session | Transaction | has many | `GET /resources/transactions/v1.0?filter[sessionId]={id}` |
 | User | Session | has many | `GET /resources/sessions/v1.0?filter[userId]={id}` |
 | Partner | ChargePoint | owns | `GET /resources/charge-points/v2.0?filter[partnerId]={id}` |
-| Partner | User | via PartnerInvite | `GET /resources/partner-invites/v1.0?filter[partnerId]={id}` |
-| User | Partner | via PartnerInvite | `GET /resources/partner-invites/v1.0?filter[userId]={id}` |
+| Partner | User | via PartnerInvite | `GET /resources/partner-invites/v2.0?filter[partnerId]={id}` |
+| User | Partner | via PartnerInvite | `GET /resources/partner-invites/v2.0?filter[userId]={id}` |
 | EVSE | TariffGroup | assigned | `GET /resources/tariff-groups/v1.0` |
 
 ---
@@ -74,7 +74,7 @@ Get a user's charging history and payment records.
 
 ```
 1. Get user details:
-   GET /resources/users/v1.0/{userId}
+   GET /resources/users/v1.1/{userId}
 
 2. Get user's sessions:
    GET /resources/sessions/v1.0?filter[userId]={userId}
@@ -85,8 +85,9 @@ Get a user's charging history and payment records.
 4. Get user's receipts:
    GET /resources/receipts/v2.0?filter[userId]={userId}
 
-5. Get user's subscriptions (if enabled):
-   GET /resources/subscriptions/v1.0?filter[userId]={userId}
+5. Get user's subscription billing periods (if enabled):
+   GET /resources/users/v1.0/{userId}/subscription-billing-periods
+   (the subscriptions resource has no userId filter — go through the user)
 ```
 
 ### 3. Fleet Management (Partner Assets)
@@ -101,13 +102,13 @@ Manage charge points and users for a B2B partner/fleet.
    GET /resources/charge-points/v2.0?filter[partnerId]={partnerId}
 
 3. Get users with access to partner:
-   GET /resources/partner-invites/v1.0?filter[partnerId]={partnerId}
+   GET /resources/partner-invites/v2.0?filter[partnerId]={partnerId}
 
 4. Get partner revenue reports:
-   GET /resources/partner-revenues/v1.1?filter[partnerId]={partnerId}
+   GET /resources/partner-revenues/v1.2?filter[partnerId]={partnerId}
 
 5. Get partner expense reports:
-   GET /resources/partner-expenses/v1.1?filter[partnerId]={partnerId}
+   GET /resources/partner-expenses/v1.2?filter[partnerId]={partnerId}
 ```
 
 ### 4. Location Discovery & Charge Point Availability

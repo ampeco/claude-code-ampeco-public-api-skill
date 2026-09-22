@@ -47,10 +47,22 @@ Replace `{tenantUrl}` with your organization's tenant URL.
 
 ### 3. Authentication
 
+Two schemes are supported; both send the same header at the wire level.
+
+**Long-lived admin token** — use the UUID token directly:
 ```bash
 curl -H "Authorization: Bearer {your-api-token}" \
      https://{tenantUrl}/public-api/resources/charge-points/v2.0/
 ```
+
+**OAuth 2.0 client credentials** — exchange first, then use the access token:
+```bash
+curl -X POST https://{tenantUrl}/public-api/oauth/token \
+     -H 'Content-Type: application/json' \
+     -d '{"grant_type":"client_credentials","client_id":"...","client_secret":"..."}'
+```
+The `client_secret` is **not** a valid bearer token on its own — it must be exchanged at
+`/public-api/oauth/token` (RFC 6749 §4.4). Revoke tokens at `/public-api/oauth/revoke`.
 
 ---
 
@@ -60,15 +72,18 @@ curl -H "Authorization: Bearer {your-api-token}" \
 ```json
 {
   "data": [...],
-  "links": { "first": "...", "last": "...", "prev": null, "next": "..." },
-  "meta": { "current_page": 1, "per_page": 100, "total": 250 }
+  "links": { "first": "...", "last": null, "prev": null, "next": "...?cursor=eyJ..." },
+  "meta": { "cursor": "eyJ...", "per_page": 100 }
 }
 ```
 
 **Path Patterns**:
 - Resources: `/public-api/resources/{resource-name}/v{X.Y}/`
-- Actions: `/public-api/actions/{target}/v{X.Y}/{id}/{action}`
+- Actions: `/public-api/actions/{target}/v{X.Y}/{id}/{action}` — the target is **singular**
+  (`actions/charge-point/...`, not `charge-points`)
 - Notifications: `/public-api/notifications/v{X.Y}/`
+- Logs: `/public-api/logs/{communication|ocpi}/v{X.Y}/`
+- OAuth: `/public-api/oauth/{token|revoke}` (unversioned)
 
 ---
 
@@ -99,6 +114,8 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Downtime Period Notices** | v1.0 | Create, Delete, Read, Update |
 | **Electricity Meters** | v1.0 | Create, Delete, Read, Update |
 | **Electricity Rates** | v1.0, 2.0 | Create, Delete, Read, Update |
+| **Energy Coupon Templates** | v1.0 | Create, Read, Update |
+| **Energy Coupons** | v1.0 | Create, Read |
 | **Evse Downtime Periods** | v1.0 | Create, Delete, Read, Update |
 | **Evses** | v2.0, 2.1 | Create, Delete, Read, Update |
 | **Faqs** | v2.0 | Create, Delete, Read, Update |
@@ -115,16 +132,25 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Parking Spaces** | v1.0 | Create, Delete, Read, Update |
 | **Partner Contracts** | v1.0 | Create, Delete, Read, Update |
 | **Partner Expenses** | v1.0, 1.1, 1.2 | Read |
-| **Partner Invites** | v1.0 | Create, Delete, Read, Update |
+| **Partner Invite Access Policies** | v1.0 | Create, Delete, Read, Update |
+| **Partner Invite Corporate Billing Policies** | v1.0 | Create, Delete, Read, Update |
+| **Partner Invite Corporate Billing Policy Snapshots** | v1.0 | Read |
+| **Partner Invites** | v1.0, 2.0 | Create, Delete, Read, Update |
+| **Partner Invoices** | v1.0 | Read |
 | **Partner Revenues** | v1.0, 1.1, 1.2 | Read |
 | **Partner Settlement Reports** | v1.0 | Create, Delete, Read, Update |
 | **Partners** | v1.0, 2.0 | Create, Delete, Read, Update |
 | **Payment Terminals** | v1.0, 1.1 | Create, Delete, Read, Update |
 | **Provisioning Certificates** | v2.0 | Create, Delete, Read, Update |
 | **Receipts** | v2.0 | Read |
+| **Reimbursement Policies** | v1.0 | Create, Delete, Read, Update |
+| **Reimbursement Records** | v1.0 | Read |
+| **Reimbursement Reports** | v1.0 | Read |
 | **Reservations** | v1.0 | Read |
 | **Rfid Tags** | v1.0 | Create, Delete, Read, Update |
 | **Roaming Connections** | v2.0 | Read |
+| **Roaming Cpos** | v1.0 | Read, Update |
+| **Roaming Emsps** | v1.0 | Create, Delete, Read, Update |
 | **Roaming Operators** | v2.0 | Create, Delete, Read, Update |
 | **Roaming Platforms** | v1.0 | Read |
 | **Roaming Providers** | v2.0 | Create, Delete, Read, Update |
@@ -133,6 +159,7 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Security Events Log** | v2.0 | Read |
 | **Sessions** | v1.0 | Read |
 | **Settings** | v1.0 | Read |
+| **Sharing Invites** | v1.0 | Read |
 | **Sub Operators** | v1.0, 2.0 | Create, Delete, Read, Update |
 | **Subscription Plans** | v1.0, 2.0 | Create, Delete, Read, Update |
 | **Subscriptions** | v1.0 | Read |
@@ -145,9 +172,11 @@ curl -H "Authorization: Bearer {your-api-token}" \
 | **Terms And Policies** | v2.0 | Read |
 | **Top Up Packages** | v2.0 | Create, Delete, Read, Update |
 | **Transactions** | v1.0 | Create, Read, Update |
+| **User Devices** | v1.0 | Read |
 | **User Groups** | v1.0 | Create, Delete, Read, Update |
 | **Users** | v1.0, 1.1 | Create, Delete, Read, Update |
 | **Utilities** | v1.0 | Create, Delete, Read, Update |
+| **Vehicles** | v1.0 | Create, Delete, Read, Update |
 | **Vendor Error Codes** | v2.0 | Create, Delete, Read, Update |
 | **Vouchers** | v2.0, 2.1 | Create, Delete, Read, Update |
 
@@ -187,16 +216,16 @@ See `reference/data-model.md` for detailed relationships and recipes.
 
 ### Pagination
 
-**Cursor pagination** (default, recommended):
+**Cursor pagination** (the only supported form on new work):
 ```
-GET /public-api/resources/users/v1.0?per_page=25
-GET /public-api/resources/users/v1.0?cursor={next_cursor}&per_page=25
+GET /public-api/resources/users/v1.0?cursor&per_page=25
+GET /public-api/resources/users/v1.0?cursor={cursor_from_links.next}&per_page=25
 ```
+Pass an empty `?cursor` to start, then take the value from `links.next` — never build one by hand.
+`per_page` defaults to 100 and is capped at 100.
 
-**Page pagination** (legacy support):
-```
-GET /public-api/resources/users/v1.0?page=1&per_page=25
-```
+**`page` is deprecated with a sunset date of Mon, 01 Jun 2026.** Do not write new integrations
+against `?page=N`.
 
 ### Filtering
 
@@ -211,8 +240,10 @@ GET /public-api/resources/sessions/v1.0?filter[startedAfter]=2024-01-01T00:00:00
 
 Embed related resources with `include[]=relationName`:
 ```
-GET /public-api/resources/charge-points/v1.0?include[]=evses&include[]=location
+GET /public-api/resources/charge-points/v2.0?include[]=connectors&include[]=lastBootNotification
 ```
+Valid values differ per resource — check the endpoint's `include` parameter in
+`reference/endpoints-index.md` rather than reusing another resource's.
 
 ### Error Responses
 
@@ -222,7 +253,10 @@ GET /public-api/resources/charge-points/v1.0?include[]=evses&include[]=location
 }
 ```
 
-Status codes: 401 (Unauthorized), 403 (Forbidden), 404 (Not Found), 422 (Validation Error)
+Status codes: 401 (Unauthorized), 403 (Forbidden), 404 (Not Found), 409 (Conflict),
+422 (Validation Error), 429 (Rate Limited — see the `X-RateLimit-*` response headers).
+Deprecated endpoints return `Deprecation` and `Sunset` response headers.
+OAuth endpoints use the RFC 6749 shape instead: `{"error": "...", "error_description": "..."}`.
 
 ---
 

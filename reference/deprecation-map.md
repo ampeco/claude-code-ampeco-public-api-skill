@@ -1,8 +1,8 @@
 # Deprecation Map
 
-Auto-generated from AMPECO Public API spec v3.168.0
+Auto-generated from AMPECO Public API spec v3.251.0
 
-**Total Deprecated Endpoints**: 84
+**Total Deprecated Endpoints**: 97
 
 | Method | Deprecated Endpoint |
 |--------|---------------------|
@@ -56,6 +56,11 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | PUT | `/public-api/resources/parking-spaces/v1.0/{parkingSpace}` |
 | GET | `/public-api/resources/partner-expenses/v1.0` |
 | GET | `/public-api/resources/partner-expenses/v1.1` |
+| GET | `/public-api/resources/partner-invites/v1.0` |
+| POST | `/public-api/resources/partner-invites/v1.0` |
+| GET | `/public-api/resources/partner-invites/v1.0/{partnerInvite}` |
+| PATCH | `/public-api/resources/partner-invites/v1.0/{partnerInvite}` |
+| DELETE | `/public-api/resources/partner-invites/v1.0/{partnerInvite}` |
 | GET | `/public-api/resources/partner-revenues/v1.0` |
 | GET | `/public-api/resources/partner-revenues/v1.1` |
 | GET | `/public-api/resources/partners/v1.0` |
@@ -73,8 +78,16 @@ Auto-generated from AMPECO Public API spec v3.168.0
 | GET | `/public-api/resources/rfid-tags/v1.0/{rfidTag}` |
 | PATCH | `/public-api/resources/rfid-tags/v1.0/{rfidTag}` |
 | DELETE | `/public-api/resources/rfid-tags/v1.0/{rfidTag}` |
+| GET | `/public-api/resources/roaming-operators/v2.0` |
+| GET | `/public-api/resources/roaming-operators/v2.0/{roamingOperator}` |
+| PATCH | `/public-api/resources/roaming-operators/v2.0/{roamingOperator}` |
 | GET | `/public-api/resources/roaming-platforms/v1.0` |
 | GET | `/public-api/resources/roaming-platforms/v1.0/{roamingPlatform}` |
+| GET | `/public-api/resources/roaming-providers/v2.0` |
+| POST | `/public-api/resources/roaming-providers/v2.0` |
+| GET | `/public-api/resources/roaming-providers/v2.0/{roamingProvider}` |
+| PATCH | `/public-api/resources/roaming-providers/v2.0/{roamingProvider}` |
+| DELETE | `/public-api/resources/roaming-providers/v2.0/{roamingProvider}` |
 | GET | `/public-api/resources/security-events-log/v2.0` |
 | GET | `/public-api/resources/security-events-log/v2.0/{securityEventLog}` |
 | GET | `/public-api/resources/sub-operators/v1.0` |
