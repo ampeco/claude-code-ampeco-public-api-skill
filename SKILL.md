@@ -132,6 +132,7 @@ The `client_secret` is **not** a valid bearer token on its own — it must be ex
 | **Invoices** | v1.0 | Read |
 | **Issues** | v1.0 | Create, Delete, Read, Update |
 | **Locations** | v1.0, 2.0 | Create, Delete, Read, Update |
+| **Ocpi Commands** | v1.0 | Read |
 | **Operators** | v1.0 | Read |
 | **Parking Spaces** | v1.0 | Create, Delete, Read, Update |
 | **Partner Contracts** | v1.0 | Create, Delete, Read, Update |

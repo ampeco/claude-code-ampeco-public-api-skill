@@ -1,8 +1,8 @@
 # Schema Reference Index
 
-Auto-generated from AMPECO Public API spec v3.251.0
+Auto-generated from AMPECO Public API spec v3.251.8
 
-**Total Schemas**: 963
+**Total Schemas**: 971
 
 ---
 
@@ -1762,11 +1762,25 @@ Auto-generated from AMPECO Public API spec v3.251.0
 
 ---
 
-## stopSession
+## stopSessionCommon
 
 **Type**: object
 
 **Properties**: stopWhenEnergyExceedsKwh, stopWhenSocExceedsPercent, timeLimitMinutes
+
+---
+
+## stopSession
+
+**Type**: object
+
+---
+
+## startSessionRestrictions
+
+**Type**: object
+
+**Properties**: minimumBalance
 
 ---
 
@@ -1798,7 +1812,7 @@ Auto-generated from AMPECO Public API spec v3.251.0
 
 **Type**: object
 
-**Properties**: additionalInformation, currency, dayTariffStart, description, discountTariffSettings, display, externalId, id, integrationId, lastUpdatedAt, learnMoreUrl, name, nightTariffStart, operatorId, partner, pricing, restrictions, stopSession, type
+**Properties**: additionalInformation, currency, dayTariffStart, description, discountTariffSettings, display, externalId, id, integrationId, lastUpdatedAt, learnMoreUrl, name, nightTariffStart, operatorId, partner, pricing, restrictions, startSessionRestrictions, stopSession, type
 
 **Required**: id, operatorId, name, type
 
@@ -4418,6 +4432,34 @@ Auto-generated from AMPECO Public API spec v3.251.0
 
 ---
 
+## OcpiCommandResult
+
+**Type**: string
+
+---
+
+## OcpiCommandType
+
+**Type**: string
+
+---
+
+## OcpiCommandFailureReason
+
+**Type**: string
+
+---
+
+## OcpiCommand
+
+**Type**: object
+
+**Properties**: createdAt, evseId, failureReason, id, reservationId, result, roamingConnectionId, roamingEmspId, sessionId, type
+
+**Required**: id, type, createdAt
+
+---
+
 ## OperatorBankDetails
 
 **Type**: object
@@ -6502,11 +6544,25 @@ Auto-generated from AMPECO Public API spec v3.251.0
 
 ---
 
+## stopSessionUpdate
+
+**Type**: object
+
+---
+
+## startSessionRestrictionsUpdate
+
+**Type**: object
+
+**Properties**: minimumBalance
+
+---
+
 ## TariffCommon_patch
 
 **Type**: object
 
-**Properties**: additionalInformation, dayTariffStart, description, discountTariffSettings, display, externalId, integrationId, learnMoreUrl, name, nightTariffStart, partner, pricing, restrictions, stopSession
+**Properties**: additionalInformation, dayTariffStart, description, discountTariffSettings, display, externalId, integrationId, learnMoreUrl, name, nightTariffStart, partner, pricing, restrictions, startSessionRestrictions, stopSession
 
 ---
 
